@@ -1,0 +1,31 @@
+
+.app-header {
+    background-color: #282c34;
+    min-height: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    color: white;
+}
+
+h1 {
+    margin-left: 0px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.login-cont {
+    display: flex;
+    justify-content: space-around;
+    min-width: 10vw;
+    margin-right: 50px;
+    font-size: 1.5rem;
+}
