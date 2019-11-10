@@ -1,0 +1,39 @@
+.user-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    background-color: lightgray;
+    margin: 20px;
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    align-items: center;
+}
+
+.user:hover {
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 5px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user-info > img {
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.user-info > h1 {
+    color: black;
+}

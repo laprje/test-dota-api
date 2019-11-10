@@ -10,7 +10,8 @@ const { SERVER_PORT, CONNECTION_STRING } = process.env;
 app.use(express.json());
 
 // END POINTS
-// app.get('/api/user', ctrl.getUser)
+app.get('/api/users', ctrl.getUsers)
+app.get('/api/users/:id', ctrl.oneUser)
 
 
 massive(CONNECTION_STRING)
