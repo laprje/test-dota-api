@@ -1,12 +1,6 @@
-.user-cont {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .user {
-    background-color: lightgray;
-    margin: 20px;
+    background-color: #3a4046;
+    margin: 10px;
     width: 30vw;
     display: flex;
     justify-content: space-between;
@@ -18,12 +12,34 @@
     cursor: pointer;
 }
 
+.user-solo {
+    background-color: #3a4046;
+    margin: 20px;
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    align-items: center;
+}
+
+.user-cont {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 h1 {
-    font-size: 3rem;
-    margin: 5px;
+    font-size: 1.5rem;
+    color: white;
+    margin-left: 10px;
+}
+
+h2 {
+    color: white;
 }
 
 .user-info {
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -35,5 +51,75 @@ h1 {
 }
 
 .user-info > h1 {
-    color: black;
+    color: white;
 }
+
+.basic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.lower-cont {
+    width: 800px;
+    height: 600px;
+    background-color: #3a4046;
+    border: solid 1px black;
+}
+
+.lower-cont > h1 {
+    margin-bottom: 5px;
+}
+
+.single-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+}
+
+.dota-plus-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.recent-matches {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    justify-content: space-between;
+}
+
+.recent-match-row {
+    padding: 6.3px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.recent-match-row:nth-child(odd) {
+    background-color: #67727c;
+}
+
+.top-two-divs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-user {
+    height: 40px;
+    width: 140px;
+    font-size: 20px;
+    font-weight: bold;
+}
+

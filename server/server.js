@@ -12,6 +12,8 @@ app.use(express.json());
 // END POINTS
 app.get('/api/users', ctrl.getUsers)
 app.get('/api/users/:id', ctrl.oneUser)
+app.post('/api/users', ctrl.addUser)
+app.delete('/api/users/:id', ctrl.deleteUser)
 
 
 massive(CONNECTION_STRING)

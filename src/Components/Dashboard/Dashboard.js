@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
 import axios from 'axios';
-// import {Link} from 'react-router-dom';
 import User from '../User/User';
+import AddUserInput from '../Inputs/AddUserInput';
 
 
 
@@ -13,6 +13,7 @@ export default class Dashboard extends Component {
         this.state = {
             users: [],
         }
+        this.componentDidMount = this.componentDidMount.bind(this)
     }
 
     componentDidMount() {
@@ -26,27 +27,26 @@ export default class Dashboard extends Component {
     }
 
     
-
     
 
     render() {
         let key = 0;
         return (
             <div className="dashboard">
-                <div>
-                    <h1>Dashboard</h1>
-                    <input 
-                    
-                    />
-                </div>
-            <div>
-                {this.state.users.map(el => (
-                    <User 
-                    userObj={el} key={key++}
-                    />
-                ))}
-            </div>
+                
+                <AddUserInput 
+                componentDidMountDashboard = {this.componentDidMount}
+                />
 
+                    {this.state.users ? (
+                    <div className="dashboard-cont">
+                        {this.state.users.map(el => (
+                            <User 
+                            userObj={el} key={key++}
+                            />
+                        ))}
+                    </div>
+                    ) : null }
 
             </div>
         )
