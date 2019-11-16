@@ -63,6 +63,7 @@ export default class User extends Component {
             .delete(`api/users/${id}`)
             .then(res => {
                 console.log("user deleted from db")
+                this.props.history.push("/")
             })
             .catch(err => console.log(err))
     }
