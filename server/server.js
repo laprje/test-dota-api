@@ -19,7 +19,7 @@ app.delete('/api/users/:id', ctrl.deleteUser)
 massive(CONNECTION_STRING)
 .then(dbInstance => {
     app.set("db", dbInstance);
-    console.log("database connected")
+    console.log("Database connected.")
     app.listen(SERVER_PORT, () => {
         console.log(`Server is listening on port ${SERVER_PORT}.`)
     });

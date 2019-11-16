@@ -1,1 +1,1 @@
-DELETE FROM users WHERE id = $1;
+DELETE FROM users WHERE account_id = $1;
