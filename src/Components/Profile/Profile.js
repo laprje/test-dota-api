@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
                         onChange={e => this.handleChange('email', e.target.value)}
                         value={this.state.email}
                     />
-                    <h3>Choose an Avatar for your profile</h3>
+                    <h3>Choose an avatar for your profile</h3>
                     <div className="avatar-container">                    
                         <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/2/25/Ancient_Apparition_minimap_icon.png?version=e3becf8cdf1503d69b7df8d34b6ccfe3' alt="" />
                         <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/5/55/Pudge_minimap_icon.png?version=e9f2d6945ca53b69e16dc7f51d691359' alt="" />
