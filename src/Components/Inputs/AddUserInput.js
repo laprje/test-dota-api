@@ -45,7 +45,7 @@ export default class AddUserInput extends Component {
                     <input 
                         className="input"
                         type="text"
-                        placeholder="Insert Account Id#"
+                        placeholder="Insert Account ID#"
                         onChange={e => this.handleaccount_id(e)}
                         name='account_id'
                         value={this.state.account_id}

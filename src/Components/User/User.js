@@ -84,7 +84,10 @@ export default class User extends Component {
                                     <div className="name">
                                         <h1>{this.state.data.profile.personaname}</h1>
                                         {this.state.data.profile.plus ? (
-                                            <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
+                                            <div className="dota-plus-icon-div">
+                                                <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
+                                                <span className="dota-plus-icon-tooltip">Dota Plus User</span>
+                                            </div>
                                         ) : null}
                                     </div>
                                     <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
@@ -106,8 +109,10 @@ export default class User extends Component {
                                             <div className="name">
                                                 <h1>{this.state.data.profile.personaname}</h1>
                                                 {this.state.data.profile.plus ? (
-                                                    <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
-                                                ) : null}
+                                                    <div className="dota-plus-icon-div">
+                                                        <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
+                                                        <span className="dota-plus-icon-tooltip">Dota Plus User</span>
+                                                    </div>                                                ) : null}
                                             </div>
                                             <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
                                             <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2>

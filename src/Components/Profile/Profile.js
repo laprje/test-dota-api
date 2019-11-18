@@ -9,9 +9,8 @@ export default class Dashboard extends Component {
     
         this.state = {
             username: '',
+            email: '',
             avatar_url: '',
-            location: '',
-            team: '',
         }
     }
 
@@ -25,28 +24,28 @@ export default class Dashboard extends Component {
         // console.log(this.props)
         return(
             <div className="profile">
-            <h1>Profile Page</h1>
+            <h1>Profile Settings</h1>
                 <div className="form">
                     <input
-                        placeholder="username" 
+                        placeholder="Username" 
                         type="text"
                         onChange={e => this.handleChange('username', e.target.value)}
                         value={this.state.username}
                     />
-                    <div className="img-holder">
-                        {this.state.avatar_url ? (
-                            <img src={this.state.avatar_url} alt="" />
-                        ) : 
-                            <img src="https://icon-library.net/images/not-found-icon/not-found-icon-28.jpg" alt="" />
-                        }
-                    </div>
-                    <h3>Avatar Url:</h3>
                     <input
-                        placeholder="Avatar Url" 
+                        placeholder="Email (Optional)" 
                         type="text"
-                        onChange={e => this.handleChange('avatar_url', e.target.value)}
-                        value={this.state.avatar_url}
+                        onChange={e => this.handleChange('email', e.target.value)}
+                        value={this.state.email}
                     />
+                    <h3>Choose an Avatar for your profile</h3>
+                    <div className="avatar-container">                    
+                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/2/25/Ancient_Apparition_minimap_icon.png?version=e3becf8cdf1503d69b7df8d34b6ccfe3' alt="" />
+                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/5/55/Pudge_minimap_icon.png?version=e9f2d6945ca53b69e16dc7f51d691359' alt="" />
+                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/f/fc/Ember_Spirit_minimap_icon.png?version=fa21609415641186a0e346b7ae675ca0' alt="" />
+                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/2/21/Phoenix_minimap_icon.png?version=740203b2905840eee8fda6b8d6a6d6e0' alt="" />
+                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/9/9c/Bounty_Hunter_minimap_icon.png?version=4914405e8ba19df2e6b193ae378db02c' alt="" />
+                    </div>
                     
                     <button>Update</button>
                 </div>

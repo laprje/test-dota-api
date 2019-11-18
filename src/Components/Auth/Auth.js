@@ -39,7 +39,7 @@ class Auth extends Component {
                 console.log(res.data.message)
             })
             .catch(err => {
-                // alert(err.response.data.message)
+                alert(err.response.data.message)
             })
     }
     
@@ -57,13 +57,13 @@ class Auth extends Component {
                         />
                         <input 
                             placeholder="Password" 
-                            type="text"
+                            type="password"
                             onChange={e => this.handleChange('password', e.target.value)}
                             value={this.state.password}
                         />                    
-                </div>
+                    </div>
                     <Link to="/">
-                    <button onClick={this.login}>Login</button>
+                        <button onClick={this.login}>Login</button>
                     </Link>
                     <Link to="/">
                         <button onClick={this.register}>Register</button>

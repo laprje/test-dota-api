@@ -1,8 +1,14 @@
+.profile { 
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
 .form {
-    width: 40%;
-    height: 650px;
+    width: 500px;
+    height: 450px;
     margin: 30px;
-    margin-left: 500px;
     background: #3a4046;
     display: flex;
     justify-content: space-around;
@@ -26,4 +32,22 @@
 
 .profile h3 {
     font-size: 2rem;
+}
+
+input {
+    width: 300px;
+}
+
+.avatar-icon {
+    width: 50px;
+}
+
+.avatar-icon:hover {
+    cursor: pointer;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
