@@ -45,12 +45,14 @@ table {
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
 
+body {
+	background-color: #282c34;
+}
 
 .app {
     text-align: center;
     height: 100vh;
 	width: 100vw;
-	background-color: #282c34;
 }
 
 img {
@@ -62,4 +64,44 @@ img {
 	color: white;
 	text-decoration: none;
 }
+
+a:hover {
+	cursor: default;
+}
+
+button {
+	height: 50px;
+	width: 120px;
+	font-size: 1.2rem;
+	border-radius: 1px;
+    background-image: -webkit-radial-gradient(50% -46%,circle,#737373,#403d39);
+    background-image: -o-radial-gradient(50% -46%,circle,#737373,#403d39);
+    background-image: radial-gradient(circle at 50% -46%,#737373,#403d39);
+    padding: 10px 20px;
+    color: #fff;
+    border: 1px solid rgb(54, 54, 54);
+}
+
+button:hover {
+	border: 1.5px rgb(179, 179, 179) solid;
+	cursor: pointer;
+}
+
+input {
+	height: 30px;
+	font-size: 1.4rem;
+}
+
+.title:hover {
+	color: rgb(185, 185, 185);
+}
+
+i:hover {
+	color: rgb(155, 155, 155);
+	cursor: pointer;
+}
+
+
+
+
 

@@ -10,6 +10,22 @@
     color: white;
 }
 
+.middle-items {
+    display: flex;
+    justify-content: space-between;
+    min-width: 350px;
+}
+
+li {
+    list-style-type: none;
+    font-size: 1.4rem;
+}
+
+li:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
 h1 {
     margin-left: 0px;
 }
@@ -24,6 +40,7 @@ h2 {
 
 .logo {
     display: flex;
+    align-items: center;
 }
 
 .logo:hover {
@@ -33,7 +50,66 @@ h2 {
 .login-cont {
     display: flex;
     justify-content: space-around;
-    min-width: 10vw;
+    min-width: 13vw;
     margin-right: 50px;
     font-size: 1.5rem;
+    align-items: center;
+}
+
+.login-cont-2 {
+    display: flex;
+    justify-content: space-around;
+    min-width: 6vw;
+    margin-right: 50px;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.login-cont h2:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.login-cont-2 h2:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
+/* Dropdown bar css */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #a7a7a7;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 40px;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logged-in-user {
+    font-size: 2rem;
+    margin: 0px;
+}
+
+.login-cont .avatar-icon {
+    height: 40px;
+    width: 40px;
 }

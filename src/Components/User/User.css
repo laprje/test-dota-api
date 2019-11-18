@@ -4,12 +4,13 @@
     width: 30vw;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 1.3px solid rgb(34, 34, 34);
     align-items: center;
 }
 
 .user:hover {
     cursor: pointer;
+    border: 1.3px solid rgb(202, 202, 202);
 }
 
 .user-solo {
@@ -18,7 +19,7 @@
     width: 30vw;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 1.3px solid rgb(34, 34, 34);
     align-items: center;
 }
 
@@ -63,9 +64,9 @@ h2 {
 
 .lower-cont {
     width: 800px;
-    height: 600px;
+    height: 625px;
     background-color: #3a4046;
-    border: solid 1px black;
+    border: 1.3px solid rgb(34, 34, 34);
 }
 
 .lower-cont > h1 {
@@ -88,6 +89,27 @@ h2 {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+}
+
+.dota-plus-icon-tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: #2e3740;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    border: 2px solid #282c34;
+
+    /* Position the tooltip */
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+    transform: translate(5px, 0px);
+}
+
+.dota-plus-icon-div:hover .dota-plus-icon-tooltip {
+    visibility: visible;
 }
 
 .recent-matches {
@@ -121,5 +143,9 @@ h2 {
     width: 140px;
     font-size: 20px;
     font-weight: bold;
+}
+
+.single-user button {
+    width: 160px;
 }
 
