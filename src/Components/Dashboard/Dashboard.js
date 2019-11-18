@@ -12,6 +12,7 @@ export default class Dashboard extends Component {
     
         this.state = {
             users: [],
+            heroes: '',
         }
         this.componentDidMount = this.componentDidMount.bind(this)
     }
