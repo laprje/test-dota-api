@@ -3,11 +3,13 @@ import './User.css';
 import LowerContainer from './LowerContainer';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux'
+import { updateUserInfo } from '../../ducks/reducer'
 
 
 
 
-export default class User extends Component {
+class User extends Component {
     constructor(props) {
         super(props)
 
@@ -122,16 +124,31 @@ export default class User extends Component {
 
                             ) : null }
                         </div>
-
-                        <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
+                        
+                        {this.props.is_admin ? (
+                            <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
+                        ) : null }
                     </div>
                     
                     <LowerContainer 
                     userId = {this.props.match.params.id}
                     />
+                    <div className="display-row">
+                        <button>Previous 20</button>
+                        <button>Next 20</button>
+                    </div>
                 </div>
                 }
             </div>
         )
     }
 }
+
+function mapStateToProps(reduxState) {
+    return reduxState
+}
+const mapDispatchToProps = {
+    updateUserInfo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User)

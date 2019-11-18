@@ -6,7 +6,7 @@
 }
 
 .form {
-    width: 500px;
+    width: 600px;
     height: 450px;
     margin: 30px;
     background: #3a4046;
@@ -50,4 +50,10 @@ input {
     display: flex;
     justify-content: space-between;
     width: 80%;
+}
+
+.display-row {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
 }

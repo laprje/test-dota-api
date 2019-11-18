@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import axios from 'axios';
-
+import LoggedInUser from './LoggedInUser';
 
 
 
@@ -33,32 +33,16 @@ const Header = props => {
                 </div>
             </Link>
             <div className="middle-items">
-                <li>Leaderboard</li>
-                <li>Records</li>
-                <li>Trending</li>
+                <Link className="link" to="/leaderboard">
+                    <li>Leaderboard</li>
+                </Link>
+                <Link className="link" to="/records">
+                    <li>Records</li>
+                </Link>
             </div>
-                {props.user_id ? (
-                    <div className="login-cont">
-                        <img className="avatar-icon" src='https://gamepedia.cursecdn.com/dota2_gamepedia/f/fc/Ember_Spirit_minimap_icon.png?version=fa21609415641186a0e346b7ae675ca0' alt="" />
-                        <div>
-                            <h2 className="logged-in-user">{props.username}</h2>
-                        </div>
-                        <div className="dropdown">
-                            <i className="fas fa-cog" />
-                            <div className="dropdown-content">
-                                <a href="#/profile">Profile Settings</a>
-                                <a onClick={logout} href="#/auth">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                ) :
-            <Link to="/auth" className="link">
-                <div className="login-cont-2">
-                    <h2>Login</h2>
-                    <i className="fas fa-user"></i>
-                </div> 
-            </Link> 
-            }
+                <LoggedInUser 
+                    logout={logout}
+                />
         </header>
     )
 }

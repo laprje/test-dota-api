@@ -12,7 +12,9 @@ CREATE TABLE registered_users (
 	user_id SERIAL PRIMARY KEY,
 	username VARCHAR(100),
 	email VARCHAR(100),
-	profile_img TEXT
+	profile_img TEXT, 
+	profile_id VARCHAR(20),
+	is_admin VARCHAR(5)
 );
 
 CREATE TABLE hash (
@@ -33,10 +35,10 @@ VALUES (
 '58684391'
 );
 
-INSERT INTO registered_users (username, email, profile_img)
+INSERT INTO registered_users (username, email, profile_img, is_admin)
 VALUES 
-('Stephen', 'hubbard_stephen@yahoo.com', 'https://steamcdn-a.akamaihd.net/apps/dota2/images/mars/hero_mars93fd33s5.jpg'),
-('Stephen2', 'xteclisx27@yahoo.com', 'https://i.pinimg.com/originals/9e/4c/ae/9e4caef87f8d429e7360cc49d9df118e.jpg');
+('Stephen', 'hubbard_stephen@yahoo.com', '', ''),
+('Admin', 'xteclisx27@yahoo.com', '', 'yes');
 
 INSERT INTO hash (hash, user_id)
 VALUES ('password', 1),

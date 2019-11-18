@@ -62,10 +62,10 @@ class Auth extends Component {
                             value={this.state.password}
                         />                    
                     </div>
-                    <Link to="/">
+                    <Link to="/profile">
                         <button onClick={this.login}>Login</button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/profile">
                         <button onClick={this.register}>Register</button>
                     </Link>
                 </div>

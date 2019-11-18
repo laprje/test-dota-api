@@ -28,6 +28,8 @@ app.delete('/api/users/:id', ctrl.deleteUser)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
+app.get('/auth/getUser', authCtrl.getUser)
+app.put('/auth/updateProfile', authCtrl.updateProfile)
 
 
 massive(CONNECTION_STRING)

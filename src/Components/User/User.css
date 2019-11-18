@@ -149,3 +149,8 @@ h2 {
     width: 160px;
 }
 
+.single-user .display-row button {
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
