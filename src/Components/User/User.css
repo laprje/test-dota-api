@@ -63,7 +63,7 @@ h2 {
 }
 
 .lower-cont {
-    width: 800px;
+    width: 500px;
     height: 625px;
     background-color: #3a4046;
     border: 1.3px solid rgb(34, 34, 34);
@@ -150,7 +150,56 @@ h2 {
 }
 
 .single-user .display-row button {
+    width: 230px;
     margin: 20px;
     margin-bottom: 50px;
 }
 
+.recent-stats-container {
+    width: 500px;
+    height: 425px;
+    background-color: #3a4046;
+    border: 1.3px solid rgb(34, 34, 34);
+    margin-right: 500px;
+    margin-left: 30px;
+}
+
+.lower-container-recent-matches {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.recent-stats-container h2 {
+    font-size: 2rem;
+    transform: translate(0px, 10px);
+}
+
+.display-column-left {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 80%;
+    margin-top: 30px;
+}
+
+.display-column-left .stat-container-row {
+    width: 100%;
+    padding: 25px 0px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.display-column-left .stat-container-row h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0px 10px;
+}
+
+.display-column-left .stat-container-row:nth-child(odd) {
+    background-color: #67727c;
+}
