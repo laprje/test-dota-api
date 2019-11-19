@@ -64,7 +64,7 @@ h2 {
 
 .lower-cont {
     width: 500px;
-    height: 625px;
+    height: 1140px;
     background-color: #3a4046;
     border: 1.3px solid rgb(34, 34, 34);
 }
@@ -130,6 +130,14 @@ h2 {
 
 .recent-match-row:nth-child(odd) {
     background-color: #67727c;
+}
+
+.recent-match-row .hero-icon {
+    margin-left: 10px;
+}
+
+.recent-match-row h2 {
+    font-size: 1.2rem;
 }
 
 .top-two-divs {
@@ -213,4 +221,18 @@ h2 {
 .hero-icon-and-name {
     display: flex;
     align-items: center;
+}
+
+.lower-cont .display-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.lower-cont .display-row h3 {
+    color: white;
+    font-size: 1.3rem;
 }

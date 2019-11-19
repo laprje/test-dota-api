@@ -124,7 +124,7 @@ class RecentStats extends Component {
         const host = 'http://cdn.dota2.com'
         return(
             <div className="recent-stats-container">
-                <h2>Last 100 Games Stats</h2>
+                <h2>Last 100 Game Fun-Facts</h2>
                 <div className="display-column-left">
                     <div className="stat-container-row">
                         <h3>Win Percentage:</h3>
