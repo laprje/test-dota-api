@@ -190,7 +190,7 @@ h2 {
     width: 100%;
     padding: 25px 0px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -202,4 +202,15 @@ h2 {
 
 .display-column-left .stat-container-row:nth-child(odd) {
     background-color: #67727c;
+}
+
+.hero-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+}
+
+.hero-icon-and-name {
+    display: flex;
+    align-items: center;
 }

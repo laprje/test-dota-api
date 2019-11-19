@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './User.css';
 // import axios from 'axios';
 // import {Link} from 'react-router-dom';
+import Heroes from '../../../src/heroes.json';
+
 
 
 
@@ -17,7 +19,7 @@ export default class RecentMatches extends Component {
     }
 
     render() {      
-        // console.log(this.props)
+        console.log(this.props)
 
         return (
             <div className="recent-match-row">
