@@ -80,3 +80,8 @@ input {
     justify-content: space-between;
     width: 100%;
 }
+
+button .StripeCheckOut {
+    width: 50px;
+    height: 100px;
+}

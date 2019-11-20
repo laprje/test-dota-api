@@ -3,6 +3,9 @@ import './Profile.css';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import axios from 'axios';
+import StripeCheckOut from 'react-stripe-checkout';
+import { toast } from 'react-toastify';
+toast.configure();
 
 
 
@@ -52,6 +55,15 @@ class Profile extends Component {
             )
             .catch(err => console.log(err))
             console.log("profile updated")
+    }
+
+    handleToken(token) {
+        axios
+            .post('/checkout')
+            .then(
+                toast('Success! Well, kinda...', {
+                    type: "success" })
+            )
     }
 
     render() {
@@ -123,6 +135,16 @@ class Profile extends Component {
                     <p>Become a user and gain access to more features!</p>
                     <button>Subscribe</button>
                 </div>
+
+                    <StripeCheckOut 
+                        stripeKey="pk_test_jS27Zws0qTn8N1rL3J45eXUZ00gFoG3e5w"
+                        token={this.handleToken}
+                        billingAddress
+                        shippingAddress
+                        amount={5 * 100}
+                        name="subscription"
+                    />
+
                 </div>
             </div>
         )

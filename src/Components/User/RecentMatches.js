@@ -42,7 +42,7 @@ export default class RecentMatches extends Component {
     }
 
     render() {     
-        console.log(this.props) 
+        // console.log(this.props) 
         const host = 'http://cdn.dota2.com'
         return (
                 <Link className="recent-match-row link" to={`/match/${this.props.matchObj.match_id}`}>

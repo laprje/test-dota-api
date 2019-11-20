@@ -7,7 +7,7 @@ export default class Player extends Component {
 
 
     render() {
-        // console.log(this.props)
+        console.log(this.props)
         const host = 'http://cdn.dota2.com';
         return(
             <div className="player">
@@ -22,7 +22,7 @@ export default class Player extends Component {
                     <h2>Dire</h2>
                     }
                     <h2>{this.props.playerObj.gold_per_min}</h2>
-                    <h2>{this.props.playerObj.actions_per_min}</h2>
+                    <h2>{this.props.playerObj.hero_damage}</h2>
                 </div>   
             </div>
         )

@@ -41,7 +41,7 @@ export default class Match extends Component {
                     <div className="display-row-end">
                         <h3>Team</h3>
                         <h3>GPM</h3>
-                        <h3>APM</h3>
+                        <h3>Damage</h3>
                     </div>
                 </div>
                 {this.state.matchData.players ? (
