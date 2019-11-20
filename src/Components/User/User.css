@@ -63,8 +63,8 @@ h2 {
 }
 
 .lower-cont {
-    width: 500px;
-    height: 1140px;
+    width: 600px;
+    height: 1175px;
     background-color: #3a4046;
     border: 1.3px solid rgb(34, 34, 34);
 }
@@ -246,4 +246,11 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     height: 100px;
+}
+
+.hero-img-name {
+    display: flex;
+    justify-content: flex-start;
+    width: 80px;
+    align-items: center;
 }

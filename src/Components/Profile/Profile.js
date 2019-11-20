@@ -121,7 +121,6 @@ class Profile extends Component {
                     <h3>Plus Subscription</h3>
                     <p>$5/month</p>
                     <p>Become a user and gain access to more features!</p>
-                    <p>Learn more(link)</p>
                     <button>Subscribe</button>
                 </div>
                 </div>

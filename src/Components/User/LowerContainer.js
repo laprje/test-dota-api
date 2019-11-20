@@ -7,6 +7,7 @@ import RecentMatches from './RecentMatches';
 
 
 
+
 export default class User extends Component {
     constructor(props) {
         super(props)
@@ -32,6 +33,7 @@ export default class User extends Component {
     render() {
         let key = 0;
         // console.log(this.state.recentMatches)
+        console.log(this.props)
         return (
             <div className="lower-container-recent-matches">
                 {this.state.recentMatches ? (
@@ -43,12 +45,12 @@ export default class User extends Component {
                             <h3>LENGTH</h3>
                             <h3>KDA</h3>
                         </div>
-                        <div className="recent-matches">{this.state.recentMatches.map(el => (
-                                <RecentMatches 
-                                matchObj={el} key={key++}
-                                />
-                            ))}
-                        </div>
+                            <div className="recent-matches">{this.state.recentMatches.map(el => (
+                                    <RecentMatches 
+                                    matchObj={el} key={key++}
+                                    />
+                                ))}
+                            </div>
 
                     </div>
                     ) : null }
