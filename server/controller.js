@@ -38,7 +38,16 @@ module.exports = {
         db.delete_user(req.params.id)
         .then(result => {
             res.status(200).send(result)
-            console.log("hit")
         }).catch(err => console.log(err))
+    }, 
+    getLeaderboard(req, res) {
+        const db = req.app.get('db');
+        db.get_leaderboard()
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            console.log({err});   
+        })
     }
 }

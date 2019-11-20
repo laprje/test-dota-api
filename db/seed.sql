@@ -23,6 +23,12 @@ CREATE TABLE hash (
 	user_id INT REFERENCES registered_users(user_id)
 );
 
+CREATE TABLE followed_users (
+	id SERIAL PRIMARY KEY,
+	follower_id INT REFERENCES registered_users(user_id),
+	followee_id INT REFERENCES users(id)
+);
+
 INSERT INTO users (name, account_id)
 VALUES (
 'Dfarm',

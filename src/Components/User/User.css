@@ -236,3 +236,14 @@ h2 {
     color: white;
     font-size: 1.3rem;
 }
+
+.kda {
+    min-width: 60px;
+}
+
+.display-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+}

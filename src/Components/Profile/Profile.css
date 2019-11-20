@@ -6,7 +6,7 @@
 }
 
 .form {
-    width: 600px;
+    width: 800px;
     height: 450px;
     margin: 30px;
     background: #3a4046;
@@ -56,4 +56,27 @@ input {
     display: flex;
     justify-content: space-between;
     width: 70%;
+}
+
+.subscribe-container {
+    width: 500px;
+    height: 250px;
+    margin: 30px;
+    background: #3a4046;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    color: white;
+}
+
+.subscribe-container p {
+    font-size: 18px;
+}
+
+.display-column .display-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

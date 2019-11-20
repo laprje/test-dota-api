@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import './Leaderboard.css';
+import axios from 'axios';
 
 class Leaderboard extends Component {
-    
-    
+    state = {
+        followedUser: []
+    }
+
+    componentDidMount() {
+
+    }
 
     render() {
         return(

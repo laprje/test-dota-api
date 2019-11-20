@@ -59,24 +59,27 @@ class Profile extends Component {
         return(
             <div className="profile">
             <h1>Profile Settings</h1>
+            <div className="display-row">
                 <div className="form">
-                    <div className="display-row">
-                        <h3>Email:</h3>
-                        <input
-                            placeholder={this.props.email} 
-                            type="text"
-                            onChange={e => this.handleChange('email', e.target.value)}
-                            value={this.state.email}
-                        />
-                    </div>
-                    <div className="display-row">
-                        <h3>ID:</h3>
-                        <input
-                            placeholder={this.props.profile_id} 
-                            type="text"
-                            onChange={e => this.handleChange('profile_id', e.target.value)}
-                            value={this.state.profile_id}
-                        />
+                    <div className="display-column">
+                        <div className="display-row">
+                            <h3>Email:</h3>
+                            <input
+                                placeholder={this.props.email} 
+                                type="text"
+                                onChange={e => this.handleChange('email', e.target.value)}
+                                value={this.state.email}
+                            />
+                        </div>
+                        <div className="display-row">
+                            <h3>ID:</h3>
+                            <input
+                                placeholder={this.props.profile_id} 
+                                type="text"
+                                onChange={e => this.handleChange('profile_id', e.target.value)}
+                                value={this.state.profile_id}
+                            />
+                        </div>
                     </div>
                     <h3>Choose an avatar for your profile</h3>
                     <div className="avatar-container">                    
@@ -113,6 +116,14 @@ class Profile extends Component {
                     </div>
                     
                     <button onClick={this.updateProfile}>Update</button>
+                </div>
+                <div className="subscribe-container">
+                    <h3>Plus Subscription</h3>
+                    <p>$5/month</p>
+                    <p>Become a user and gain access to more features!</p>
+                    <p>Learn more(link)</p>
+                    <button>Subscribe</button>
+                </div>
                 </div>
             </div>
         )
