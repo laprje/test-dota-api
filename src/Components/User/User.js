@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './User.css';
 import LowerContainer from './LowerContainer';
+import RecentStats from './RecentStats';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -129,13 +130,18 @@ class User extends Component {
                             <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                         ) : null }
                     </div>
-                    
-                    <LowerContainer 
-                    userId = {this.props.match.params.id}
-                    />
                     <div className="display-row">
-                        <button>Previous 20</button>
-                        <button>Next 20</button>
+                        <div className="recent-matches-container">
+                            <LowerContainer 
+                            userId = {this.props.match.params.id}
+                            />
+                            
+                        </div>
+                        <div className="recent-stats-component-container">
+                            <RecentStats 
+                            userId = {this.props.match.params.id}
+                            />
+                        </div>
                     </div>
                 </div>
                 }
