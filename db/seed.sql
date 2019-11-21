@@ -23,6 +23,12 @@ CREATE TABLE hash (
 	user_id INT REFERENCES registered_users(user_id)
 );
 
+CREATE TABLE followed_users (
+	id SERIAL PRIMARY KEY,
+	follower_id INT REFERENCES registered_users(user_id),
+	followee_id INT REFERENCES users(id)
+);
+
 INSERT INTO users (name, account_id)
 VALUES (
 'Dfarm',
@@ -44,5 +50,14 @@ INSERT INTO hash (hash, user_id)
 VALUES ('password', 1),
 ('s3cret', 2);
 
-
+-- SELECT * FROM registered_users ru
+-- JOIN followed_users fu 
+-- ON
+-- fu.followee_id = ru.user_id
+-- JOIN users
+-- ON 
+-- users.
+-- WHERE ru.user_id IN (SELECT followee_id FROM followed_users
+--                      WHERE follower_id = 5)
+        
 

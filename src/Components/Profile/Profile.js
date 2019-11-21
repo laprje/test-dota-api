@@ -3,6 +3,9 @@ import './Profile.css';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import axios from 'axios';
+import StripeCheckOut from 'react-stripe-checkout';
+import { toast } from 'react-toastify';
+toast.configure();
 
 
 
@@ -54,29 +57,41 @@ class Profile extends Component {
             console.log("profile updated")
     }
 
+    handleToken(token) {
+        axios
+            .post('/checkout')
+            .then(
+                toast('Success! Well, kinda...', {
+                    type: "success" })
+            )
+    }
+
     render() {
         // console.log(this.props)
         return(
             <div className="profile">
             <h1>Profile Settings</h1>
+            <div className="display-row">
                 <div className="form">
-                    <div className="display-row">
-                        <h3>Email:</h3>
-                        <input
-                            placeholder={this.props.email} 
-                            type="text"
-                            onChange={e => this.handleChange('email', e.target.value)}
-                            value={this.state.email}
-                        />
-                    </div>
-                    <div className="display-row">
-                        <h3>ID:</h3>
-                        <input
-                            placeholder={this.props.profile_id} 
-                            type="text"
-                            onChange={e => this.handleChange('profile_id', e.target.value)}
-                            value={this.state.profile_id}
-                        />
+                    <div className="display-column">
+                        <div className="display-row">
+                            <h3>Email:</h3>
+                            <input
+                                placeholder={this.props.email} 
+                                type="text"
+                                onChange={e => this.handleChange('email', e.target.value)}
+                                value={this.state.email}
+                            />
+                        </div>
+                        <div className="display-row">
+                            <h3>ID:</h3>
+                            <input
+                                placeholder={this.props.profile_id} 
+                                type="text"
+                                onChange={e => this.handleChange('profile_id', e.target.value)}
+                                value={this.state.profile_id}
+                            />
+                        </div>
                     </div>
                     <h3>Choose an avatar for your profile</h3>
                     <div className="avatar-container">                    
@@ -113,6 +128,23 @@ class Profile extends Component {
                     </div>
                     
                     <button onClick={this.updateProfile}>Update</button>
+                </div>
+                <div className="subscribe-container">
+                    <h3>Plus Subscription</h3>
+                    <p>$5/month</p>
+                    <p>Become a user and gain access to more features!</p>
+                    <button>Subscribe</button>
+                </div>
+
+                    <StripeCheckOut 
+                        stripeKey="pk_test_jS27Zws0qTn8N1rL3J45eXUZ00gFoG3e5w"
+                        token={this.handleToken}
+                        billingAddress
+                        shippingAddress
+                        amount={5 * 100}
+                        name="subscription"
+                    />
+
                 </div>
             </div>
         )

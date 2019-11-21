@@ -1,0 +1,65 @@
+.match-container {
+    width: 1000px;
+    height: 500px;
+    background-color: #3a4046;
+    border: 1.3px solid rgb(34, 34, 34);
+    margin: 20px auto;
+}
+
+.match .display-row {
+    margin: 0px auto;
+    width: 1000px;
+}
+
+.match h1 {
+    margin-top: 20px;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player h2 {
+    font-size: 24px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+}
+
+.player:nth-child(odd) {
+    background-color: #67727c;
+}
+
+.display-row-start {
+    display: flex;
+    justify-content: space-between;
+    min-width: 200px;
+    align-items: center;
+}
+
+.display-row-start img {
+    margin-left: 10px;
+}
+
+.display-row-end {
+    display: flex;
+    justify-content: space-between;
+    min-width: 300px;
+}
+
+h3 {
+    color: white;
+    font-size: 20px;
+}
+
+.recent-match-row {
+    border: 1px solid rgb(34, 34, 34);
+}
+
+.recent-match-row:hover {
+    cursor: pointer;
+    border: 1px solid white;
+}

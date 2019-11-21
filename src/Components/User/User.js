@@ -40,25 +40,25 @@ class User extends Component {
                 })
             })
         }
-        if (this.props.userObj) {
-            axios
-                .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}/wl`)
-                .then(res => {
-                    this.setState({
-                        wl: res.data
-                    })
-                    // console.log(res.data)
-                })
-        } else {
-            axios
-                .get(`https://api.opendota.com/api/players/${this.props.match.params.id}/wl`)
-                .then(res => {
-                    this.setState({
-                        wl: res.data
-                    })
-                    // console.log(res.data)
-                })
-            }
+        // if (this.props.userObj) {
+        //     axios
+        //         .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}/wl`)
+        //         .then(res => {
+        //             this.setState({
+        //                 wl: res.data
+        //             })
+        //             // console.log(res.data)
+        //         })
+        // } else {
+        //     axios
+        //         .get(`https://api.opendota.com/api/players/${this.props.match.params.id}/wl`)
+        //         .then(res => {
+        //             this.setState({
+        //                 wl: res.data
+        //             })
+        //             // console.log(res.data)
+        //         })
+        //     }
     }
 
     deleteUser(id) {
@@ -94,7 +94,7 @@ class User extends Component {
                                         ) : null}
                                     </div>
                                     <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
-                                    <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2>
+                                    {/* <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2> */}
                                 </div>
                                 <img className="profile-img" src={this.state.data.profile.avatarfull} alt="profile pic" />
                             </div>
@@ -118,7 +118,7 @@ class User extends Component {
                                                     </div>                                                ) : null}
                                             </div>
                                             <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
-                                            <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2>
+                                            {/* <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2> */}
                                         </div>                            
                                         <img className="profile-img" src={this.state.data.profile.avatarfull} alt="profile pic" />
                                 </div>
@@ -126,9 +126,12 @@ class User extends Component {
                             ) : null }
                         </div>
                         
-                        {this.props.is_admin ? (
-                            <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
-                        ) : null }
+                        <div className="display-column">
+                            {this.props.is_admin ? (
+                                <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
+                            ) : null }
+                                <button className="follow-user">Follow</button>
+                        </div>
                     </div>
                     <div className="display-row">
                         <div className="recent-matches-container">
