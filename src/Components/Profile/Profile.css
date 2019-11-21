@@ -59,7 +59,8 @@ input {
 }
 
 .subscribe-container {
-    width: 500px;
+    padding: 10px;
+    width: 400px;
     height: 250px;
     margin: 30px;
     background: #3a4046;
@@ -85,3 +86,50 @@ button .StripeCheckOut {
     width: 50px;
     height: 100px;
 }
+
+.card-element {
+    background-color: white;
+    width: 80%;
+    height: 40px;
+    font-size: 30px;
+}
+
+.form-container {
+    position: absolute;
+    width: 500px;
+    height: 450px;
+    z-index: 5;
+    border: 1px solid black;
+    background: #3a4046; 
+    margin: 0px 200px;
+
+}
+
+.stripe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.by-stripe {
+    width: 60%;
+    height: 60px;
+    border: 2px solid rgba(209, 209, 221, 0.2);
+}
+
+.x {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    align-content: center;
+}
+

@@ -251,6 +251,6 @@ h2 {
 .hero-img-name {
     display: flex;
     justify-content: flex-start;
-    width: 80px;
+    min-width: 90px;
     align-items: center;
 }

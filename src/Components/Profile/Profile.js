@@ -3,8 +3,10 @@ import './Profile.css';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import axios from 'axios';
-import StripeCheckOut from 'react-stripe-checkout';
+import { StripeProvider, Elements} from 'react-stripe-elements'
 import { toast } from 'react-toastify';
+import Form from './Form';
+
 toast.configure();
 
 
@@ -18,6 +20,7 @@ class Profile extends Component {
             email: '',
             profile_id: '',
             profile_img: '',
+            subToggle: false,
         }
     }
 
@@ -57,14 +60,6 @@ class Profile extends Component {
             console.log("profile updated")
     }
 
-    handleToken(token) {
-        axios
-            .post('/checkout')
-            .then(
-                toast('Success! Well, kinda...', {
-                    type: "success" })
-            )
-    }
 
     render() {
         // console.log(this.props)
@@ -129,21 +124,20 @@ class Profile extends Component {
                     
                     <button onClick={this.updateProfile}>Update</button>
                 </div>
-                <div className="subscribe-container">
-                    <h3>Plus Subscription</h3>
-                    <p>$5/month</p>
-                    <p>Become a user and gain access to more features!</p>
-                    <button>Subscribe</button>
-                </div>
+                
+                    <div className="subscribe-container">
+                        <h3>Donate Here</h3>
+                        <p>Donate any amount and get a fancy badge on profile!</p>
+                        <button onClick={() => this.setState({subToggle: !this.state.subToggle })}>Donate</button>
+                    </div>
 
-                    <StripeCheckOut 
-                        stripeKey="pk_test_jS27Zws0qTn8N1rL3J45eXUZ00gFoG3e5w"
-                        token={this.handleToken}
-                        billingAddress
-                        shippingAddress
-                        amount={5 * 100}
-                        name="subscription"
-                    />
+                        {this.state.subToggle ? (
+                            <StripeProvider apiKey="pk_test_jS27Zws0qTn8N1rL3J45eXUZ00gFoG3e5w">
+                                <Elements>
+                                    <Form />
+                                </Elements>
+                            </StripeProvider>
+                        ) : null}
 
                 </div>
             </div>

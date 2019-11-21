@@ -33,6 +33,9 @@ const Header = props => {
                 </div>
             </Link>
             <div className="middle-items">
+            <Link className="link" to="/">
+                    <li>Dashboard</li>
+                </Link>
                 <Link className="link" to="/leaderboard">
                     <li>Leaderboard</li>
                 </Link>
