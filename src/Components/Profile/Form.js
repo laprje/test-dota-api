@@ -41,16 +41,18 @@ class Form extends Component {
         return(
                 <main className="form-container">
                     <form onSubmit={this.handleSubmit} className="stripe-form">
-                        <button className="x">X</button>
+                        <h4 className="x" onClick={this.props.subToggleFn}>X</h4>
                         <img className="by-stripe" src="assets/by-stripe.png" alt="stripe" />
                         <label>Name</label>
                         <input 
+                            placeholder="Name"
                             type="text" 
                             value={this.state.name}
                             onChange={e => this.handleChange('name', e.target.value)}
                         />
-                        <label>($)Amount</label>
-                        <input 
+                        <label>Amount($usd)</label>
+                        <input
+                            placeholder="Amount"
                             type="number" 
                             value={this.state.amount}
                             onChange={e => this.handleChange('amount', e.target.value)}

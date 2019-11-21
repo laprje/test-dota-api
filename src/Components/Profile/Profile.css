@@ -1,3 +1,12 @@
+.blurYes {
+    transition: 1s;
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+}
+
 .profile { 
     display: flex;
     flex-direction: column;
@@ -40,10 +49,12 @@ input {
 
 .avatar-icon {
     width: 50px;
+    transition: .3s;
 }
 
 .avatar-icon:hover {
     cursor: pointer;
+    transform: scale(1.2);
 }
 
 .avatar-container {
@@ -61,7 +72,7 @@ input {
 .subscribe-container {
     padding: 10px;
     width: 400px;
-    height: 250px;
+    height: 350px;
     margin: 30px;
     background: #3a4046;
     display: flex;
@@ -70,6 +81,7 @@ input {
     align-items: center;
     border: 1px solid black;
     color: white;
+    
 }
 
 .subscribe-container p {
@@ -91,7 +103,7 @@ button .StripeCheckOut {
     background-color: white;
     width: 80%;
     height: 40px;
-    font-size: 30px;
+    fontSize: 40px;
 }
 
 .form-container {
@@ -101,7 +113,8 @@ button .StripeCheckOut {
     z-index: 5;
     border: 1px solid black;
     background: #3a4046; 
-    margin: 0px 200px;
+    margin: -500px 400px;
+    border-radius: 10px;
 
 }
 
@@ -133,3 +146,17 @@ button .StripeCheckOut {
     align-content: center;
 }
 
+.x:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+
+.stripe-btn {
+    width: 220px;
+    margin: 0px;
+}
+
+.btc-qr-code {
+    height: 150px;
+    width: 150px;
+}
