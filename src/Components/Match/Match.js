@@ -19,7 +19,6 @@ export default class Match extends Component {
                 this.setState({
                     matchData: res.data
                 })
-                console.log(this.state)
             })
     }
 

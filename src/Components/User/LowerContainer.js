@@ -32,8 +32,6 @@ export default class User extends Component {
     
     render() {
         let key = 0;
-        // console.log(this.state.recentMatches)
-        console.log(this.props)
         return (
             <div className="lower-container-recent-matches">
                 {this.state.recentMatches ? (

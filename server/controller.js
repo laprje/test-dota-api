@@ -1,3 +1,4 @@
+
 module.exports = {
     getUsers: (req, res) => {
         const db = req.app.get('db');
@@ -49,5 +50,26 @@ module.exports = {
         .catch(err => {
             console.log({err});   
         })
-    }
+    }, 
+    // stripeFn: async (req, res) => {
+    //     const stripe = new stripeLoader(STRIPE_SECRET);
+
+    //     const charge = (token, amt) => {
+    //         return stripe.charges.create({
+    //             amount: +(amt * 100),
+    //             currency: 'usd',
+    //             source: token,
+    //             description: 'Statement Description'
+    //         })
+    //     } 
+
+    //     try {
+    //         let data = await charge(req.body.token.id, req.body.amount);
+    //         console.log(data)
+    //         res.send("Charged!");
+    //     } catch(e) {
+    //         console.log(e)
+    //         res.status(500);
+    //     }
+    // }
 }

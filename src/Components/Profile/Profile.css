@@ -1,3 +1,12 @@
+.blurYes {
+    transition: 1s;
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+}
+
 .profile { 
     display: flex;
     flex-direction: column;
@@ -40,10 +49,12 @@ input {
 
 .avatar-icon {
     width: 50px;
+    transition: .3s;
 }
 
 .avatar-icon:hover {
     cursor: pointer;
+    transform: scale(1.2);
 }
 
 .avatar-container {
@@ -59,8 +70,9 @@ input {
 }
 
 .subscribe-container {
-    width: 500px;
-    height: 250px;
+    padding: 10px;
+    width: 400px;
+    height: 350px;
     margin: 30px;
     background: #3a4046;
     display: flex;
@@ -69,6 +81,7 @@ input {
     align-items: center;
     border: 1px solid black;
     color: white;
+    
 }
 
 .subscribe-container p {
@@ -84,4 +97,66 @@ input {
 button .StripeCheckOut {
     width: 50px;
     height: 100px;
+}
+
+.card-element {
+    background-color: white;
+    width: 80%;
+    height: 40px;
+    fontSize: 40px;
+}
+
+.form-container {
+    position: absolute;
+    width: 500px;
+    height: 450px;
+    z-index: 5;
+    border: 1px solid black;
+    background: #3a4046; 
+    margin: -500px 400px;
+    border-radius: 10px;
+
+}
+
+.stripe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.by-stripe {
+    width: 60%;
+    height: 60px;
+    border: 2px solid rgba(209, 209, 221, 0.2);
+}
+
+.x {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    align-content: center;
+}
+
+.x:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+
+.stripe-btn {
+    width: 220px;
+    margin: 0px;
+}
+
+.btc-qr-code {
+    height: 150px;
+    width: 150px;
 }
