@@ -30,14 +30,12 @@ class RecentStats extends Component {
                 this.setState({
                     matches100: res.data
                 })
-                // console.log(this.state.matches100)
                 this.averageGameLength()
                 this.averageKillsFn()
                 this.averageDeathsFn()
                 this.averageAssistsFn()
                 this.mostPlayedHeroFn()
                 this.averagePartyFn()
-                // console.log(this.state)
 
             })
     }
@@ -124,7 +122,7 @@ class RecentStats extends Component {
         const host = 'http://cdn.dota2.com'
         return(
             <div className="recent-stats-container">
-                <h2>Last 100 Game Fun-Facts</h2>
+                <h2>Last 100 Game Fun Facts</h2>
                 <div className="display-column-left">
                     <div className="stat-container-row">
                         <h3>Win Percentage:</h3>

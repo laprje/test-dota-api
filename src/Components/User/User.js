@@ -105,6 +105,12 @@ class User extends Component {
                 // rendered on single user page
                 <div className="single-user">
                     <div className="top-two-divs">
+                        <div className="display-column">
+                            {this.props.is_admin ? (
+                                <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
+                            ) : null }
+                                <button className="follow-user">Follow</button>
+                        </div>
                         <div className="user-solo">
                             {this.state.data ? (
                                 <div className="user-info">
@@ -125,12 +131,9 @@ class User extends Component {
 
                             ) : null }
                         </div>
-                        
                         <div className="display-column">
-                            {this.props.is_admin ? (
-                                <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
-                            ) : null }
-                                <button className="follow-user">Follow</button>
+                            <div className="badges">
+                            </div>
                         </div>
                     </div>
                     <div className="display-row">

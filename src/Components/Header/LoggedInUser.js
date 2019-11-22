@@ -38,6 +38,7 @@ class LoggedInUser extends Component {
                     <div className="dropdown">
                         <i className="fas fa-cog" />
                         <div className="dropdown-content">
+                            <a href={`#/user/${this.props.profile_id}`}>My Profile</a>
                             <a href="#/profile">Profile Settings</a>
                             <a onClick={this.props.logout} href="#/auth">Logout</a>
                         </div>

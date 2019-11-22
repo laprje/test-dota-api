@@ -162,7 +162,17 @@ class Profile extends Component {
                             <h3>Donate Here</h3>
                             <p>Donate any amount and get a fancy badge on profile!</p>
                             <button className="stripe-btn" onClick={() => this.subToggleFn()}>Donate With Stripe</button>
-                            <button className="stripe-btn" onClick={() => this.cryptoToggleFn()}>Crypto Addresses</button>
+                            <button className="stripe-btn" onClick={() => this.cryptoToggleFn()}>Bitcoin Address</button>
+
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_donations" />
+                                <input type="hidden" name="business" value="JQXL3EXVZUMLN" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <button className="paypal-btn">Donate with Paypal</button>
+                            </form>
+
+
                         </div>
 
 

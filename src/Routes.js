@@ -5,6 +5,7 @@ import Auth from './Components/Auth/Auth';
 import Profile from './Components/Profile/Profile';
 import Leaderboard from './Components/Leaderboard/Leaderboard';
 import Records from './Components/Records/Records';
+import Achievements from './Components/Achievements/Achievements';
 import Match from './Components/Match/Match';
 import {Switch, Route} from 'react-router-dom';
 
@@ -17,5 +18,6 @@ export default (
         <Route path={'/leaderboard'} component={Leaderboard} />
         <Route path={'/records'} component={Records} />
         <Route path={'/match/:id'} component={Match} />
+        <Route path={'/achievements'} component={Achievements} />
     </Switch>
 )

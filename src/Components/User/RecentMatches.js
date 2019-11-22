@@ -48,11 +48,11 @@ export default class RecentMatches extends Component {
                 <Link className="recent-match-row link" to={`/match/${this.props.matchObj.match_id}`}>
                     <div className="hero-img-name">
                         <img className="hero-icon" src={`${host}.${Heroes[this.props.matchObj.hero_id].icon}`} alt="hero" />
-                        <h2>{Heroes[this.props.matchObj.hero_id].localized_name}</h2>
+                        <h2 className="hero-name">{Heroes[this.props.matchObj.hero_id].localized_name}</h2>
                     </div>
                     <div className="recent-match-stats-row">
                         {this.state.userWin ? (
-                        <h2>{this.state.userWin}</h2>
+                        <h2 className={this.state.userWin}>{this.state.userWin}</h2>
                         ) : null }
                         <h2>{(this.props.matchObj.duration / 60).toFixed(0)} Min</h2>
                         <h2 className="kda">{this.props.matchObj.kills}/{this.props.matchObj.deaths}/{this.props.matchObj.assists}</h2>

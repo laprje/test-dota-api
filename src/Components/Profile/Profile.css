@@ -108,14 +108,17 @@ button .StripeCheckOut {
 
 .form-container {
     position: absolute;
+    display: flex;
+    justify-content: space-evenly;
     width: 500px;
     height: 450px;
     z-index: 5;
     border: 1px solid black;
     background: #3a4046; 
-    margin: -500px 400px;
     border-radius: 10px;
-
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .stripe-form {
@@ -159,4 +162,9 @@ button .StripeCheckOut {
 .btc-qr-code {
     height: 150px;
     width: 150px;
+}
+
+.paypal-btn {
+    height: 50px;
+    width: 210px;
 }

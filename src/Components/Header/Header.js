@@ -33,7 +33,7 @@ const Header = props => {
                 </div>
             </Link>
             <div className="middle-items">
-            <Link className="link" to="/">
+                <Link className="link" to="/">
                     <li>Dashboard</li>
                 </Link>
                 <Link className="link" to="/leaderboard">
@@ -41,6 +41,9 @@ const Header = props => {
                 </Link>
                 <Link className="link" to="/records">
                     <li>Records</li>
+                </Link>
+                <Link className="link" to="/achievements">
+                    <li>Achievements</li>
                 </Link>
             </div>
                 <LoggedInUser 
