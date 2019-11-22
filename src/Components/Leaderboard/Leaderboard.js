@@ -25,7 +25,7 @@ class Leaderboard extends Component {
     render() {
         let key = 0;
         return(
-            <div>
+            <div className="leaderboard-page">
                 <h1>Leaderboard.js</h1>
 
                 {this.state.followedUsers ? (

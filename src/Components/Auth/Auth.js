@@ -45,29 +45,31 @@ class Auth extends Component {
     
     render() {
         return (
-            <div className="Auth">
-                <div className="auth-container">
-                    <h1>Welcome!</h1>
-                    <div className="two-input">
-                        <input 
-                            placeholder="Username" 
-                            type="text"
-                            onChange={e => this.handleChange('username', e.target.value)}
-                            value={this.state.username}
-                        />
-                        <input 
-                            placeholder="Password" 
-                            type="password"
-                            onChange={e => this.handleChange('password', e.target.value)}
-                            value={this.state.password}
-                        />                    
+            <div className="auth-page">
+                <div className="Auth">
+                    <div className="auth-container">
+                        <h1>Welcome!</h1>
+                        <div className="two-input">
+                            <input 
+                                placeholder="Username" 
+                                type="text"
+                                onChange={e => this.handleChange('username', e.target.value)}
+                                value={this.state.username}
+                            />
+                            <input 
+                                placeholder="Password" 
+                                type="password"
+                                onChange={e => this.handleChange('password', e.target.value)}
+                                value={this.state.password}
+                            />                    
+                        </div>
+                        <Link to="/profile">
+                            <button onClick={this.login}>Login</button>
+                        </Link>
+                        <Link to="/profile">
+                            <button onClick={this.register}>Register</button>
+                        </Link>
                     </div>
-                    <Link to="/profile">
-                        <button onClick={this.login}>Login</button>
-                    </Link>
-                    <Link to="/profile">
-                        <button onClick={this.register}>Register</button>
-                    </Link>
                 </div>
             </div>
         )

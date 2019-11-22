@@ -1,3 +1,7 @@
+.auth-page {
+    height: 80vh;
+}
+
 .Auth {
     display: flex;
     flex-direction: column;

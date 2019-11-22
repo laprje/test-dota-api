@@ -6,7 +6,7 @@ class Achievements extends Component {
 
     render() {
         return(
-            <div>
+            <div className="achievements-page">
                 <h1>Achievements.js</h1>
             </div>
         )

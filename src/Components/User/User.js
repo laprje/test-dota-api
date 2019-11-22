@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './User.css';
 import LowerContainer from './LowerContainer';
+import DoughnutGraph from './DoughnutGraph';
 import RecentStats from './RecentStats';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -132,8 +133,8 @@ class User extends Component {
                             ) : null }
                         </div>
                         <div className="display-column">
-                            <div className="badges">
-                            </div>
+                            {/* <div className="badges">
+                            </div> */}
                         </div>
                     </div>
                     <div className="display-row">
@@ -143,13 +144,21 @@ class User extends Component {
                             />
                             
                         </div>
-                        <div className="recent-stats-component-container">
-                            <RecentStats 
-                            userId = {this.props.match.params.id}
-                            />
+                        <div className="display-column">
+                            <div className="recent-stats-component-container">
+                                <RecentStats 
+                                    userId = {this.props.match.params.id}
+                                />
+                            </div>
+                            <div className="donut-div">
+                                <DoughnutGraph 
+                                    userId = {this.props.match.params.id}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 }
             </div>
         )

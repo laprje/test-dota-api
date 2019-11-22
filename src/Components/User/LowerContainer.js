@@ -86,8 +86,8 @@ export default class User extends Component {
                     </div>
                     ) : null }
                 <div className="display-row">
-                    <button onClick={this.previousButton}>Previous 20</button>
-                    <button onClick={this.nextButton}>Next 20</button>
+                    <button onClick={this.previousButton}>Previous 10</button>
+                    <button onClick={this.nextButton}>Next 10</button>
                 </div>
             </div>
         )

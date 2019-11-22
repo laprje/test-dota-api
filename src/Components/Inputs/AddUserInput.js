@@ -39,7 +39,6 @@ class AddUserInput extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="AddUserInput">
                 <div className="flex-row">

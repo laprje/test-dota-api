@@ -78,6 +78,8 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 100vh;
+    margin-bottom: 100px;
 }
 
 .name {
@@ -307,4 +309,22 @@ h2 {
     display: flex;
     min-width: 320px;
     justify-content: space-between;
+}
+
+.doughnut {
+    height: 0px;
+    width: 0px;
+}
+
+.doughnut-cont {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 500px;
+    height: 100px;
+}
+
+.donut-div {
+    margin-left: 50px;
+    margin-top: 10px;
 }

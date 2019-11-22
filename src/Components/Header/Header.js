@@ -29,7 +29,7 @@ const Header = props => {
             <Link to="/" className="link">
                 <div className="logo">
                     <img src="assets/Dota-2-Logo.png" alt="dota logo"/>
-                    <h1 className="title">Dota 100</h1>
+                    <h1 className="title">Dotoxic</h1>
                 </div>
             </Link>
             <div className="middle-items">

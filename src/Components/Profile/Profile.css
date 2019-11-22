@@ -8,6 +8,7 @@
 }
 
 .profile { 
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -103,7 +104,6 @@ button .StripeCheckOut {
     background-color: white;
     width: 80%;
     height: 40px;
-    fontSize: 40px;
 }
 
 .form-container {
