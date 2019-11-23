@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 
 
-export default class AddUserInput extends Component {
+class AddUserInput extends Component {
     constructor(props) {
         super(props)
     
@@ -26,8 +27,8 @@ export default class AddUserInput extends Component {
                     users: res.data
                 })
             })
-            this.props.componentDidMountDashboard()
             this.componentDidMount()
+            this.props.history.push(`/user/${this.state.account_id}`)
         }
     
     handleaccount_id(e) {
@@ -55,3 +56,5 @@ export default class AddUserInput extends Component {
         )
     }
 }
+
+export default withRouter(AddUserInput)

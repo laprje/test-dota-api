@@ -13,7 +13,7 @@
 .middle-items {
     display: flex;
     justify-content: space-between;
-    min-width: 350px;
+    min-width: 550px;
 }
 
 li {

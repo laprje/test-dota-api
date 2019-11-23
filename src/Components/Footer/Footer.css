@@ -1,0 +1,58 @@
+footer {
+    color: white;
+    width: 80%;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+h5 {
+    border-bottom: 1px solid rgba(0,0,0,0)
+}
+
+ul h5:hover {
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    color: lightgray;
+}
+
+h6 {
+    font-size: 120%;
+}
+
+.social-media-btns {
+    display: flex;
+}
+
+.social-media-btns img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px;
+}
+
+.social-media-btns img:hover {
+    cursor: pointer;
+}
+
+.github-logo {
+    filter: invert(100%);
+}
+
+.linkedin-logo {
+    transform: scale(1.2);
+}
+
+.contact-me-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
