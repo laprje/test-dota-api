@@ -50,7 +50,18 @@ module.exports = {
         .catch(err => {
             console.log({err});   
         })
-    }, 
+    },
+    getFollowedUsers: (req, res) => {
+        const db = req.app.get('db');
+        const { user_id } = req.session.user
+        db.get_followed_users([user_id])
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            console.log({err});   
+        })
+    },
     // stripeFn: async (req, res) => {
     //     const stripe = new stripeLoader(STRIPE_SECRET);
 
