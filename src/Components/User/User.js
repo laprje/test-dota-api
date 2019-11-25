@@ -24,8 +24,6 @@ class User extends Component {
     }
 
     componentDidMount() {
-        
-
         if (this.props.userObj) { 
             axios
             .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}`)
@@ -47,10 +45,12 @@ class User extends Component {
             axios
             .get('/api/followed')
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     followedUsers: res.data[0].followee_id
                 })
                 console.log(this.state)
+                this.renderFollowedUsers()
             })
         }
         // if (this.props.userObj) {
@@ -72,6 +72,10 @@ class User extends Component {
         //             // console.log(res.data)
         //         })
         //     }
+    }
+
+    renderFollowedUsers() {
+        console.log("hit")
     }
 
     deleteUser(id) {
