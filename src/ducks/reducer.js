@@ -4,7 +4,7 @@ const initialState = {
     profile_img: '',
     email: '',
     is_admin: '',
-    profile_id: '',
+    account_id: '',
 }
 
 const UPDATE_USER_INFO = 'UPDATE_USER_INFO'

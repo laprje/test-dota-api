@@ -23,12 +23,12 @@ module.exports = {
         return res.status(401).send({message: 'An account with that username does not exist'})
         }
         const foundUser = await db.find_hash([username])
-        const {hash, user_id, profile_img, email, is_admin, profile_id} = foundUser[0]
+        const {hash, user_id, profile_img, email, is_admin, account_id} = foundUser[0]
         const result = bcrypt.compareSync(password, hash)
         if (!result) {
         return res.status(401).send({message: 'Password incorrect'})
         }
-        req.session.user = {user_id, username, profile_img, email, is_admin, profile_id}
+        req.session.user = {user_id, username, profile_img, email, is_admin, account_id}
         res.status(200).send({message: 'Logged in', user: req.session.user})
     },
     logout: (req, res) => {

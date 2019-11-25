@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
 
@@ -8,9 +9,15 @@ class Footer extends Component {
         return(
             <footer>
                 <ul>
-                    <h5>ABOUT</h5>
-                    <h5>FAQ</h5>
-                    <h5>CONTACT</h5>
+                    <Link to="/about">
+                        <h5>ABOUT</h5>
+                    </Link>
+                    <Link to="/faq">
+                        <h5>FAQ</h5>
+                    </Link>
+                    <Link to="/contact">
+                        <h5>CONTACT</h5>
+                    </Link>
                     <a href="https://github.com/StephenHubbard/dota-api">
                         <h5>GITHUB</h5>
                     </a>

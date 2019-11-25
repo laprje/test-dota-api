@@ -74,7 +74,7 @@ class User extends Component {
     
 
     render(props) {      
-        // console.log(this.props)
+        console.log(this.props)
 
         return (
             <div className="user-cont">
@@ -110,7 +110,9 @@ class User extends Component {
                             {this.props.is_admin ? (
                                 <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                             ) : null }
+                            {this.props.username ? (
                                 <button className="follow-user">Follow</button>
+                            ) : null } 
                         </div>
                         <div className="user-solo">
                             {this.state.data ? (
