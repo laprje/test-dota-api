@@ -19,11 +19,12 @@ class User extends Component {
             data: '',
             wl: '',
             recentMatches: '',
+            followedUsers: [],
         }
     }
 
     componentDidMount() {
-        if (this.props.userObj) {
+        if (this.props.userObj) { 
             axios
             .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}`)
             .then(res => {
@@ -32,6 +33,7 @@ class User extends Component {
                 })
                 // console.log(res.data)
             })
+            
         } else {
             axios
             .get(`https://api.opendota.com/api/players/${this.props.match.params.id}`)
@@ -39,6 +41,16 @@ class User extends Component {
                 this.setState({
                     data: res.data
                 })
+            })
+            axios
+            .get('/api/followed')
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    followedUsers: res.data[0].followee_id
+                })
+                console.log(this.state)
+                this.renderFollowedUsers()
             })
         }
         // if (this.props.userObj) {
@@ -62,6 +74,10 @@ class User extends Component {
         //     }
     }
 
+    renderFollowedUsers() {
+        console.log("hit")
+    }
+
     deleteUser(id) {
         axios
             .delete(`api/users/${id}`)
@@ -74,7 +90,6 @@ class User extends Component {
     
 
     render(props) {      
-        // console.log(this.props)
 
         return (
             <div className="user-cont">
@@ -110,7 +125,9 @@ class User extends Component {
                             {this.props.is_admin ? (
                                 <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                             ) : null }
+                            {this.props.username ? (
                                 <button className="follow-user">Follow</button>
+                            ) : null } 
                         </div>
                         <div className="user-solo">
                             {this.state.data ? (
@@ -133,8 +150,11 @@ class User extends Component {
                             ) : null }
                         </div>
                         <div className="display-column">
-                            {/* <div className="badges">
-                            </div> */}
+                            <div className="badges">
+                                {this.state.followedUsers ? (
+                                    <h3>{this.state.followedUsers}</h3>
+                                ) : null }
+                            </div>
                         </div>
                     </div>
                     <div className="display-row">

@@ -7,6 +7,7 @@ import Leaderboard from './Components/Leaderboard/Leaderboard';
 import Records from './Components/Records/Records';
 import Achievements from './Components/Achievements/Achievements';
 import Match from './Components/Match/Match';
+import MissingPage from './Components/MissingPage/MissingPage';
 import {Switch, Route} from 'react-router-dom';
 
 export default (
@@ -19,5 +20,6 @@ export default (
         <Route path={'/records'} component={Records} />
         <Route path={'/match/:id'} component={Match} />
         <Route path={'/achievements'} component={Achievements} />
+        <Route component={MissingPage} />
     </Switch>
 )

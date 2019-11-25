@@ -25,6 +25,7 @@ app.get('/api/users/:id', ctrl.oneUser)
 app.post('/api/users', ctrl.addUser)
 app.delete('/api/users/:id', ctrl.deleteUser)
 app.get('/api/users/leaderboard', ctrl.getLeaderboard)
+app.get('/api/followed', ctrl.getFollowedUsers)
 
 // AUTH END POINTS 
 app.post('/auth/register', authCtrl.register)

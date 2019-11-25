@@ -25,8 +25,11 @@ export default class User extends Component {
                 this.setState({
                     recentMatches: res.data
                 })
+                // console.log(this.state.recentMatches)
             })
     }
+
+    
     
 
     nextButton = async () => {
@@ -63,6 +66,7 @@ export default class User extends Component {
     
     render() {
         let key = 0;
+        // console.log(this.state)
         return (
             <div className="lower-container-recent-matches">
                 {this.state.recentMatches ? (
@@ -72,6 +76,7 @@ export default class User extends Component {
                             <h3>HERO</h3>
                             <div className="display-row-3">
                                 <h3>RESULT</h3>
+                                <h3>DATE</h3>
                                 <h3>LENGTH</h3>
                                 <h3>KDA</h3>
                             </div>

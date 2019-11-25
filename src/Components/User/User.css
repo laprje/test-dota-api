@@ -4,7 +4,7 @@
     width: 30vw;
     display: flex;
     justify-content: space-between;
-    border: 1.3px solid rgb(34, 34, 34);
+    border: 1.3px solid rgba(119, 113, 113, 0);
     align-items: center;
 }
 

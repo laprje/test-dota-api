@@ -20,7 +20,6 @@ export default class DoughnutGraph extends Component {
                 allWords: res.data
             })
             // this.listByDesc()
-            console.log(this.state)
         })
     }
 
@@ -58,7 +57,7 @@ export default class DoughnutGraph extends Component {
         return(
             <div className="doughnut">
                 <div className="doughnut-cont">
-                    <h1>Potty Mouth?</h1>
+                    <h1>Top Words All Time</h1>
                     <Doughnut data={data} />
                 </div>
             </div>

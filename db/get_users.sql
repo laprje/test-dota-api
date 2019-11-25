@@ -1,1 +1,1 @@
-SELECT * FROM users;
+SELECT * FROM registered_users;

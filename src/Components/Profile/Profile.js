@@ -165,7 +165,7 @@ class Profile extends Component {
                             <button className="stripe-btn" onClick={() => this.cryptoToggleFn()}>Bitcoin Address</button>
 
 
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                                 <input type="hidden" name="cmd" value="_donations" />
                                 <input type="hidden" name="business" value="JQXL3EXVZUMLN" />
                                 <input type="hidden" name="currency_code" value="USD" />
