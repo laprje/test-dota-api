@@ -45,13 +45,17 @@ class User extends Component {
             axios
             .get('/api/followed')
             .then(res => {
+                let newArr = []
                 console.log(res.data)
+                for (let i = 0; i < res.data.length; i++) {
+                    newArr.push(res.data[i].followee_id)
+                    }
+                console.log(newArr)
                 this.setState({
-                    followedUsers: res.data[0].followee_id
+                    followedUsers: newArr
                 })
                 console.log(this.state)
-                this.renderFollowedUsers()
-            })
+                })
         }
         // if (this.props.userObj) {
         //     axios
@@ -149,12 +153,12 @@ class User extends Component {
 
                             ) : null }
                         </div>
-                        <div className="display-column">
-                            <div className="badges">
+                        <div className="user-solo">
                                 {this.state.followedUsers ? (
-                                    <h3>{this.state.followedUsers}</h3>
+                                    <span>{this.state.followedUsers.map( el => (
+                                        <h3 key={el}>{el}</h3>
+                                    ))}</span>
                                 ) : null }
-                            </div>
                         </div>
                     </div>
                     <div className="display-row">

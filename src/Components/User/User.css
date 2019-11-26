@@ -16,6 +16,7 @@
 .user-solo {
     background-color: #3a4046;
     margin: 20px;
+    height: 120px;
     width: 30vw;
     display: flex;
     justify-content: space-between;
