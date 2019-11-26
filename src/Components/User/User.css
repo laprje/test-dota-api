@@ -329,3 +329,28 @@ h2 {
     margin-left: 50px;
     margin-top: 10px;
 }
+
+.follow-cont {
+    background-color: #3a4046;
+    margin: 20px;
+    height: 120px;
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    border: 1.3px solid rgb(34, 34, 34);
+    align-items: center;
+}
+
+.followee-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 18vw;
+    margin-left: 10px;
+}
+
+.profile-img-followee {
+    height: 50px;
+    width: 50px;
+}

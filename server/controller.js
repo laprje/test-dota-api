@@ -62,4 +62,16 @@ module.exports = {
             console.log({err});   
         })
     },
+    getFollowedAccountId: async (req, res) => {
+        const db = req.app.get('db');
+        const {user_id} = req.body
+        await db.get_followed_account_id([user_id])
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            console.log({err})
+        })
+
+    },
 }

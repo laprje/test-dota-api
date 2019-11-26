@@ -81,7 +81,8 @@ export default class User extends Component {
                                 <h3>KDA</h3>
                             </div>
                         </div>
-                            <div className="recent-matches">{this.state.recentMatches.map(el => (
+                            <div className="recent-matches">
+                                {this.state.recentMatches.map(el => (
                                     <RecentMatches 
                                     matchObj={el} key={key++}
                                     />

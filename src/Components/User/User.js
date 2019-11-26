@@ -7,6 +7,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
+import FollowedUsers from './FollowedUsers';
 
 
 
@@ -20,10 +21,13 @@ class User extends Component {
             wl: '',
             recentMatches: '',
             followedUsers: [],
+            followedUsersFinal: '',
+            followedUsersData: [],
         }
     }
 
     componentDidMount() {
+        let newArr = []
         if (this.props.userObj) { 
             axios
             .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}`)
@@ -41,46 +45,67 @@ class User extends Component {
                 this.setState({
                     data: res.data
                 })
-            })
-            axios
+                axios
             .get('/api/followed')
-            .then(res => {
-                let newArr = []
-                console.log(res.data)
-                for (let i = 0; i < res.data.length; i++) {
-                    newArr.push(res.data[i].followee_id)
-                    }
-                console.log(newArr)
-                this.setState({
-                    followedUsers: newArr
-                })
-                console.log(this.state)
-                })
+                .then(res => {
+                    for (let i = 0; i < res.data.length; i++) {
+                        newArr.push(res.data[i].followee_id)
+                        }
+                    })
+                    .then(res => {
+                        this.setState({
+                            followedUsers: newArr
+                        }, () => {
+                            console.log(this.state.followedUsers)
+                        })
+
+                    })
+                
+                console.log(this.state.followedUsers)
+                this.getAccountIds()
+            })   
+            .catch(err => {
+                console.log("need to login")
+            })
         }
-        // if (this.props.userObj) {
-        //     axios
-        //         .get(`https://api.opendota.com/api/players/${this.props.userObj.account_id}/wl`)
-        //         .then(res => {
-        //             this.setState({
-        //                 wl: res.data
-        //             })
-        //             // console.log(res.data)
-        //         })
-        // } else {
-        //     axios
-        //         .get(`https://api.opendota.com/api/players/${this.props.match.params.id}/wl`)
-        //         .then(res => {
-        //             this.setState({
-        //                 wl: res.data
-        //             })
-        //             // console.log(res.data)
-        //         })
-        //     }
     }
 
+    getAccountIds() {
+        let newArr = []
+        console.log(this.state.followedUsers)
+        for (let i = 0; i < this.state.followedUsers.length; i++) {
+            console.log("test" + this.state.followedUsers[0])
+            let user_id = this.state.followedUsers[i]
+            axios
+            .post('/api/followed/users', {user_id})
+            .then(res => {
+                newArr.push(res.data[i].account_id)
+                console.log(newArr)
+            })
+        }
+            this.setState({
+                followedUsersFinal: newArr
+            }) 
+            console.log(this.state.followedUsersFinal)
+            
+            this.renderFollowedUsers()
+        }
+    
+
     renderFollowedUsers() {
-        console.log("hit")
-    }
+        console.log("render followed users fn hit")
+        if (this.state.followedUsersFinal) {
+        axios
+            .get(`https://api.opendota.com/api/players/${this.state.followedUsersFinal}`)
+            .then(res => {
+                let newArr = []
+                newArr.push(res.data)
+                this.setState({
+                    followedUsersData: newArr
+                })
+            })
+            } 
+        }
 
     deleteUser(id) {
         axios
@@ -93,7 +118,8 @@ class User extends Component {
     }
     
 
-    render(props) {      
+    render(props) {    
+        let key = 0;  
 
         return (
             <div className="user-cont">
@@ -153,13 +179,21 @@ class User extends Component {
 
                             ) : null }
                         </div>
-                        <div className="user-solo">
-                                {this.state.followedUsers ? (
-                                    <span>{this.state.followedUsers.map( el => (
-                                        <h3 key={el}>{el}</h3>
-                                    ))}</span>
-                                ) : null }
-                        </div>
+
+                    <div className="follow-cont">
+                        {this.state.followedUsersData ? (
+                            this.state.followedUsersData.map(el => (
+                            <div>
+                                <FollowedUsers
+                                followedUserObj={el} key={key++}
+                                />
+                            </div>
+                            ))
+                        ) : null }
+                    </div>
+
+                    
+
                     </div>
                     <div className="display-row">
                         <div className="recent-matches-container">
