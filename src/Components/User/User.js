@@ -24,7 +24,7 @@ class User extends Component {
             wl: '',
             recentMatches: '',
             followedUsers: [],
-            followedUsersFinal: [8628965],
+            followedUsersFinal: '',
             followedUsersData: [],
         }
         
@@ -42,29 +42,28 @@ class User extends Component {
             })
             
         } else {
+            console.log(this.props)
             axios
             .get(`https://api.opendota.com/api/players/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
                     data: res.data
                 })
-
             axios
             .get('/api/followed')
+            .then(res => {
+                for (let i = 0; i < res.data.length; i++) {
+                    newArr.push(res.data[i].followee_id)
+                    }
+                })
                 .then(res => {
-                    for (let i = 0; i < res.data.length; i++) {
-                        newArr.push(res.data[i].followee_id)
-                        }
+                    this.setState({
+                        followedUsers: newArr 
+                    }, () => {
+                        this.getAccountIds() 
                     })
-                    .then(res => {
-                        this.setState({
-                            followedUsers: newArr
-                        }, () => {
-                            // console.log(this.state.followedUsers)
-                            this.getAccountIds()
-                        })
 
-                    })
+                })
             })   
             .catch(err => {
                 console.log("need to login")
@@ -75,7 +74,6 @@ class User extends Component {
     getAccountIds() {
         this.loopUsers()
         this.delayThree()
-        // console.log(this.state.followedUsers)
     }
 
     delayThree() {
@@ -123,13 +121,25 @@ class User extends Component {
             .catch(err => console.log(err))
     }
 
-    
+    followUser(id) {
+        const user_id = this.props.user_id
+        console.log(this.props.user_id)
+        axios
+            .post(`auth/users/follow/${id}`, {user_id})
+            .then(res => {
+                console.log("now following user blank")
+            })
+            .catch(err => console.log(err))
+    }
     
 
     
 
     render(props) {    
         let key = 0;  
+        let key2 = 0;
+        console.log(this.props)
+
 
         return (
             <div className="user-cont">
@@ -166,7 +176,7 @@ class User extends Component {
                                 <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                             ) : null }
                             {this.props.username ? (
-                                <button className="follow-user">Follow</button>
+                                <button onClick={() => this.followUser(this.props.match.params.id)} className="follow-user">Follow</button>
                             ) : null } 
                         </div>
                         <div className="user-solo">
@@ -191,7 +201,8 @@ class User extends Component {
                         </div>
 
 
-                        <div className="follow-cont">
+            {this.state.followedUsersFinal ? (
+            <div className="follow-cont">
                 <Element name="test7" className="element" id="containerElement" style={{
                     height: '200px',
                     width: '400px',
@@ -200,7 +211,7 @@ class User extends Component {
 
                         {this.state.followedUsersData ? (
                             this.state.followedUsersData.map(el => (
-                            <div>
+                            <div key={key2++}>
                                 <Element name="firstInsideContainer" style={{
                                 marginBottom: '10px'
                                 }}>
@@ -213,9 +224,8 @@ class User extends Component {
                         ) : null }
                     
                 </Element>
-
-
-                    </div>
+            </div>
+            ): null }
 
                     
 

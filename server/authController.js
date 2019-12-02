@@ -40,13 +40,30 @@ module.exports = {
     }, 
     updateProfile: (req, res) => {
         const db = req.app.get('db')
-        const { email, profile_img, user_id} = req.body
-        db.update_profile({ email, profile_img, user_id})
+        console.log(req.body)
+        const { email, profile_img, account_id } = req.body
+        const { user_id } = req.session.user
+        db.update_profile({ email, profile_img, account_id, user_id })
         .then(result => {
             res.status(200).send(result)
         })
         .catch(err => {
             res.status(500).send('something went wront with updateProfile')
+            console.log(err)
+        })
+    }, 
+    followUser: (req, res) => {
+        const db = req.app.get('db')
+        console.log(req.body)
+        const { user_id } = req.body
+        const followee_id = user_id
+        const follower_id = req.session.user.user_id
+        db.followUser({ follower_id, followee_id })
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            res.status(500).send('something went wrong with followUser')
             console.log(err)
         })
     }

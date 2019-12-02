@@ -19,7 +19,7 @@ class Profile extends Component {
         this.state = {
             user_id: '',
             email: '',
-            profile_id: '',
+            account_id: '',
             profile_img: '',
             subToggle: false,
             cryptoToggle: false,
@@ -32,7 +32,7 @@ class Profile extends Component {
     componentDidMount() {
         this.setState({
             email: this.props.email,
-            profile_id: this.props.profile_id,
+            account_id: this.props.account_id,
             profile_img: this.props.profile_img,
             user_id: this.props.user_id,
         })
@@ -58,7 +58,7 @@ class Profile extends Component {
                 this.props.updateUserInfo({
                     profile_img: this.state.profile_img,
                     email: this.state.email, 
-                    profile_id: this.state.profile_id,
+                    account_id: this.state.account_id,
                 })
             )
             .catch(err => console.log(err))
@@ -114,10 +114,10 @@ class Profile extends Component {
                             <div className="display-row">
                                 <h3>ID:</h3>
                                 <input
-                                    placeholder={this.props.profile_id} 
+                                    placeholder={this.props.account_id} 
                                     type="text"
-                                    onChange={e => this.handleChange('profile_id', e.target.value)}
-                                    value={this.state.profile_id}
+                                    onChange={e => this.handleChange('account_id', e.target.value)}
+                                    value={this.state.account_id}
                                 />
                             </div>
                         </div>

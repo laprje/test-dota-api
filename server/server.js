@@ -34,6 +34,7 @@ app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/getUser', authCtrl.getUser)
 app.put('/auth/updateProfile', authCtrl.updateProfile)
+app.post('/auth/users/follow/:id', authCtrl.followUser)
 
 // SWIPE ENDPOINTS
 

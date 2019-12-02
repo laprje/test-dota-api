@@ -123,7 +123,7 @@ class RecentStats extends Component {
         return(
             <div className="recent-stats-container">
                 <h2>Last 100 Game Fun Facts</h2>
-                <div className="display-column-left">
+                <div className="display-column-left"> 
                     <div className="stat-container-row">
                         <h3>Win Percentage:</h3>
                         <h3>{this.state.wl100.win}%</h3>

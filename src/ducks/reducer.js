@@ -1,8 +1,8 @@
 const initialState = {
     username: '', 
-    user_id: '5',
+    user_id: '',
     profile_img: '',
-    email: '',
+    email: '(optional)',
     is_admin: '',
     account_id: '',
 }
