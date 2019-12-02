@@ -25,7 +25,7 @@ export default class User extends Component {
                 this.setState({
                     recentMatches: res.data
                 })
-                // console.log(this.state.recentMatches)
+
             })
     }
 

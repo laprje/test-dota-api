@@ -132,7 +132,7 @@ class RecentStats extends Component {
                         <h3>Most Played Hero:</h3>
                         {this.state.mostPlayedHero ? (
                             <div className="hero-icon-and-name">
-                                <img  className="hero-icon" src={`${host}.${Heroes[this.state.mostPlayedHero].icon}`} alt="hero" />
+                                <img  className="hero-icon" src={`${host}.${Heroes[this.state.mostPlayedHero].img}`} alt="hero" />
                                 <h3>{Heroes[this.state.mostPlayedHero].localized_name}</h3>
                             </div>
                         ) : null }

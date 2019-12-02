@@ -11,7 +11,7 @@ export default class FollowedUser extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div className="followee-cont">
                 <h3>{this.props.followedUserObj.profile.personaname}</h3>

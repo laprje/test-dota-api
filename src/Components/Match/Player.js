@@ -12,7 +12,7 @@ export default class Player extends Component {
         return(
             <div className="player">
                 <div className="display-row-start">
-                    <img  className="hero-icon" src={`${host}.${Heroes[this.props.playerObj.hero_id].icon}`} alt="hero" />
+                    <img  className="hero-icon" src={`${host}.${Heroes[this.props.playerObj.hero_id].img}`} alt="hero" />
                     <h2 className="player-name">{this.props.playerObj.personaname}</h2>
                 </div>
                 <div className="display-row-end">

@@ -212,11 +212,11 @@ h2 {
 }
 
 .display-column-left .stat-container-row:nth-child(odd) {
-    background-color: #67727c;
+background-color: #67727c;
 }
 
 .hero-icon {
-    min-width: 40px;
+    min-width: 80px;
     height: 40px;
     margin: 0px;
 }
@@ -334,11 +334,12 @@ h2 {
     background-color: #3a4046;
     margin: 20px;
     height: 120px;
-    width: 20vw;
-    display: flex;
-    justify-content: space-between;
+    width: 400px;
     border: 1.3px solid rgb(34, 34, 34);
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .followee-cont {
@@ -346,7 +347,7 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 18vw;
+    width:90%;
     margin-left: 10px;
 }
 

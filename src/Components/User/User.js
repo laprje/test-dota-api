@@ -8,11 +8,14 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import FollowedUsers from './FollowedUsers';
+import { Element } from 'react-scroll'
+
 
 
 
 
 class User extends Component {
+    
     constructor(props) {
         super(props)
 
@@ -21,9 +24,10 @@ class User extends Component {
             wl: '',
             recentMatches: '',
             followedUsers: [],
-            followedUsersFinal: '',
+            followedUsersFinal: [8628965],
             followedUsersData: [],
         }
+        
     }
 
     componentDidMount() {
@@ -35,7 +39,6 @@ class User extends Component {
                 this.setState({
                     data: res.data
                 })
-                // console.log(res.data)
             })
             
         } else {
@@ -45,7 +48,8 @@ class User extends Component {
                 this.setState({
                     data: res.data
                 })
-                axios
+
+            axios
             .get('/api/followed')
                 .then(res => {
                     for (let i = 0; i < res.data.length; i++) {
@@ -56,13 +60,11 @@ class User extends Component {
                         this.setState({
                             followedUsers: newArr
                         }, () => {
-                            console.log(this.state.followedUsers)
+                            // console.log(this.state.followedUsers)
+                            this.getAccountIds()
                         })
 
                     })
-                
-                console.log(this.state.followedUsers)
-                this.getAccountIds()
             })   
             .catch(err => {
                 console.log("need to login")
@@ -71,40 +73,44 @@ class User extends Component {
     }
 
     getAccountIds() {
+        this.loopUsers()
+        this.delayThree()
+        // console.log(this.state.followedUsers)
+    }
+
+    delayThree() {
+        setTimeout(this.renderFollowedUsers, 1000)
+
+    }
+    
+    loopUsers() {
         let newArr = []
-        console.log(this.state.followedUsers)
         for (let i = 0; i < this.state.followedUsers.length; i++) {
-            console.log("test" + this.state.followedUsers[0])
             let user_id = this.state.followedUsers[i]
             axios
             .post('/api/followed/users', {user_id})
             .then(res => {
-                newArr.push(res.data[i].account_id)
-                console.log(newArr)
-            })
-        }
-            this.setState({
-                followedUsersFinal: newArr
+                newArr.push(res.data[0].account_id)
             }) 
-            console.log(this.state.followedUsersFinal)
-            
-            this.renderFollowedUsers()
         }
+        this.setState({
+            followedUsersFinal: newArr
+        })
+    }
     
 
-    renderFollowedUsers() {
-        console.log("render followed users fn hit")
-        if (this.state.followedUsersFinal) {
-        axios
-            .get(`https://api.opendota.com/api/players/${this.state.followedUsersFinal}`)
-            .then(res => {
-                let newArr = []
-                newArr.push(res.data)
-                this.setState({
-                    followedUsersData: newArr
+    renderFollowedUsers = () => {
+        let newArr = []
+        for (let i = 0; i < this.state.followedUsersFinal.length; i++) {
+            axios
+                .get(`https://api.opendota.com/api/players/${this.state.followedUsersFinal[i]}`)
+                .then(res => {
+                    newArr.push(res.data)
+                    this.setState({
+                        followedUsersData: newArr
+                    })
                 })
-            })
-            } 
+            }    
         }
 
     deleteUser(id) {
@@ -116,6 +122,10 @@ class User extends Component {
             })
             .catch(err => console.log(err))
     }
+
+    
+    
+
     
 
     render(props) {    
@@ -180,16 +190,31 @@ class User extends Component {
                             ) : null }
                         </div>
 
-                    <div className="follow-cont">
+
+                        <div className="follow-cont">
+                <Element name="test7" className="element" id="containerElement" style={{
+                    height: '200px',
+                    width: '400px',
+                    overflow: 'scroll',
+                }}>
+
                         {this.state.followedUsersData ? (
                             this.state.followedUsersData.map(el => (
                             <div>
+                                <Element name="firstInsideContainer" style={{
+                                marginBottom: '10px'
+                                }}>
                                 <FollowedUsers
                                 followedUserObj={el} key={key++}
                                 />
+                                </Element>
                             </div>
                             ))
                         ) : null }
+                    
+                </Element>
+
+
                     </div>
 
                     
