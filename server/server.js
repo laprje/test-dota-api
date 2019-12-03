@@ -1,3 +1,5 @@
+const path = require('path');
+
 require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
@@ -9,6 +11,10 @@ const stripeLoader = require('stripe')
 const app = express();
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, STRIPE_SECRET} = process.env;
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.use(express.json());
 
