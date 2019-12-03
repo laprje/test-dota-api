@@ -40,7 +40,6 @@ module.exports = {
     }, 
     updateProfile: (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
         const { email, profile_img, account_id } = req.body
         const { user_id } = req.session.user
         db.update_profile({ email, profile_img, account_id, user_id })

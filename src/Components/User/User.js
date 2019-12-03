@@ -9,6 +9,8 @@ import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import FollowedUsers from './FollowedUsers';
 import { Element } from 'react-scroll'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -26,6 +28,7 @@ class User extends Component {
             followedUsers: [],
             followedUsersFinal: '',
             followedUsersData: [],
+            thisUserId: '',
         }
         
     }
@@ -42,7 +45,7 @@ class User extends Component {
             })
             
         } else {
-            console.log(this.props)
+            const id = this.props.match.params.id
             axios
             .get(`https://api.opendota.com/api/players/${this.props.match.params.id}`)
             .then(res => {
@@ -65,9 +68,14 @@ class User extends Component {
 
                 })
             })   
-            .catch(err => {
-                console.log("need to login")
+            axios
+            .get(`api/users/${id}`)
+            .then( res => {
+                this.setState({
+                    thisUserId: res.data[0]
+                })
             })
+            .catch(err => console.log(err))
         }
     }
 
@@ -122,12 +130,19 @@ class User extends Component {
     }
 
     followUser(id) {
-        const user_id = this.props.user_id
-        console.log(this.props.user_id)
+        const user_id = this.state.thisUserId.user_id
         axios
             .post(`auth/users/follow/${id}`, {user_id})
             .then(res => {
-                console.log("now following user blank")
+                this.componentDidMount()
+                toast.success(`Now following ${this.state.data.profile.personaname}`, {
+                    position: "top-right", 
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    });
             })
             .catch(err => console.log(err))
     }
@@ -138,7 +153,6 @@ class User extends Component {
     render(props) {    
         let key = 0;  
         let key2 = 0;
-        console.log(this.props)
 
 
         return (
@@ -151,7 +165,7 @@ class User extends Component {
                             <div className="user-info">
                                 <div className="basic-info">
                                     <div className="name">
-                                        <h1>{this.state.data.profile.personaname}</h1>
+                                        <h1>{this.state.data.profile.personaname.substr(0, 10)}</h1>
                                         {this.state.data.profile.plus ? (
                                             <div className="dota-plus-icon-div">
                                                 <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
@@ -176,15 +190,30 @@ class User extends Component {
                                 <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                             ) : null }
                             {this.props.username ? (
+                                <div>
                                 <button onClick={() => this.followUser(this.props.match.params.id)} className="follow-user">Follow</button>
-                            ) : null } 
+                                <ToastContainer
+                                    position="top-right"
+                                    autoClose={5000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnVisibilityChange
+                                    draggable
+                                    pauseOnHover
+                                    />
+                                    {/* Same as */}
+                                <ToastContainer />
+                                </div>
+                            ) : null }
                         </div>
                         <div className="user-solo">
                             {this.state.data ? (
                                 <div className="user-info">
                                         <div className="basic-info">
                                             <div className="name">
-                                                <h1>{this.state.data.profile.personaname}</h1>
+                                                <h1>{this.state.data.profile.personaname.substr(0, 10)}</h1>
                                                 {this.state.data.profile.plus ? (
                                                     <div className="dota-plus-icon-div">
                                                         <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />

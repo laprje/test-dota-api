@@ -12,7 +12,9 @@ module.exports = {
     },
     oneUser(req, res) {
         const db = req.app.get('db')
-        db.one_user(+req.params.id)
+        const account_id_num = req.params.id
+        const account_id = account_id_num.toString()
+        db.one_user(account_id)
         .then(result => {
             res.status(200).send(result)
         })

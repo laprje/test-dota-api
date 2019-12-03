@@ -23,7 +23,7 @@ export default class Match extends Component {
     }
 
     render() {
-        // console.log(this.props)
+        console.log(this.props)
         let key = 0;
         return(
             <div className="match">
