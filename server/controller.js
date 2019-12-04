@@ -74,6 +74,18 @@ module.exports = {
         .catch(err => {
             console.log({err})
         })
-
     },
+    isFollowing: (req, res) => {
+        const db = req.app.get('db');
+        const {this_user_id} = req.body
+        const { user_id } = req.session.user
+        db.is_following({this_user_id, user_id})
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+    }
 }

@@ -355,3 +355,10 @@ background-color: #67727c;
     height: 50px;
     width: 50px;
 }
+
+.element {
+    height: 200px;
+    width: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+}

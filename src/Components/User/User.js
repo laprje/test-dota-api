@@ -29,6 +29,7 @@ class User extends Component {
             followedUsersFinal: '',
             followedUsersData: [],
             thisUserId: '',
+            isFollowing: false,
         }
         
     }
@@ -74,9 +75,31 @@ class User extends Component {
                 this.setState({
                     thisUserId: res.data[0]
                 })
+                this.isFollowingFn()
+
             })
             .catch(err => console.log(err))
         }
+    }
+
+    isFollowingFn() {
+        let this_user_id = this.state.thisUserId.user_id
+        axios
+        .post('/api/isFollowing', {this_user_id})
+        .then(res => {
+            if (res.data.length > 0) {
+            if (this_user_id === res.data[0].followee_id) {
+                this.setState({
+                    isFollowing: true
+                })
+            } else {
+                console.log("not following user")
+            }
+        } else {
+            console.log("not following user 2")
+        }
+        })
+    
     }
 
     getAccountIds() {
@@ -146,6 +169,27 @@ class User extends Component {
             })
             .catch(err => console.log(err))
     }
+
+    unFollowUser(id) {
+        const user_id = this.state.thisUserId.user_id
+        axios
+            .post(`auth/users/unfollow/${id}`, {user_id})
+            .then(res => {
+                this.componentDidMount()
+                toast.error(`Now unfollowing ${this.state.data.profile.personaname}`, {
+                    position: "top-right", 
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true, 
+                    pauseOnHover: true,
+                    draggable: true,
+                    });
+                this.setState({
+                    isFollowing: false,
+                })
+            })
+            .catch(err => console.log(err))
+    }
     
 
     
@@ -191,7 +235,10 @@ class User extends Component {
                             ) : null }
                             {this.props.username ? (
                                 <div>
-                                <button onClick={() => this.followUser(this.props.match.params.id)} className="follow-user">Follow</button>
+                                {this.state.isFollowing ? (
+                                <button onClick={() => this.unFollowUser(this.props.match.params.id)} className="follow-user">Unfollow</button>
+                                ) : <button onClick={() => this.followUser(this.props.match.params.id)} className="follow-user">Follow</button>
+                                }
                                 <ToastContainer
                                     position="top-right"
                                     autoClose={5000}
@@ -232,11 +279,7 @@ class User extends Component {
 
             {this.state.followedUsersFinal ? (
             <div className="follow-cont">
-                <Element name="test7" className="element" id="containerElement" style={{
-                    height: '200px',
-                    width: '400px',
-                    overflow: 'scroll',
-                }}>
+                <Element name="test7" className="element" id="containerElement">
 
                         {this.state.followedUsersData ? (
                             this.state.followedUsersData.map(el => (

@@ -56,7 +56,7 @@ module.exports = {
         const { user_id } = req.body
         const followee_id = user_id
         const follower_id = req.session.user.user_id
-        db.followUser({ follower_id, followee_id })
+        db.follow_user({ follower_id, followee_id })
         .then(result => {
             res.status(200).send(result)
         })
@@ -64,5 +64,20 @@ module.exports = {
             res.status(500).send('something went wrong with followUser')
             console.log(err)
         })
-    }
+    }, 
+    unFollowUser: (req, res) => {
+        const db = req.app.get('db')
+        const { user_id } = req.body
+        const followee_id = user_id
+        const follower_id = req.session.user.user_id
+        db.un_follow_user({ follower_id, followee_id })
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => {
+            res.status(500).send('something went wrong with unFollowUser')
+            console.log(err)
+        })
+    }, 
+
 } 

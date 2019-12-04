@@ -31,6 +31,7 @@ app.delete('/api/users/:id', ctrl.deleteUser)
 app.get('/api/users/leaderboard', ctrl.getLeaderboard)
 app.get('/api/followed', ctrl.getFollowedUsers)
 app.post('/api/followed/users', ctrl.getFollowedAccountId)
+app.post('/api/isFollowing', ctrl.isFollowing)
 
 // AUTH END POINTS 
 app.post('/auth/register', authCtrl.register)
@@ -39,6 +40,8 @@ app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/getUser', authCtrl.getUser)
 app.put('/auth/updateProfile', authCtrl.updateProfile)
 app.post('/auth/users/follow/:id', authCtrl.followUser)
+app.post('/auth/users/unfollow/:id', authCtrl.unFollowUser)
+
 
 // SWIPE ENDPOINTS
 
