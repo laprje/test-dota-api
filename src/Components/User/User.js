@@ -121,7 +121,7 @@ class User extends Component {
 
     deleteUser(id) {
         axios
-            .delete(`api/users/${id}`)
+            .delete(`api/users/${id}`) 
             .then(res => {
                 console.log("user deleted from db")
                 this.props.history.push("/")
@@ -139,7 +139,7 @@ class User extends Component {
                     position: "top-right", 
                     autoClose: 5000,
                     hideProgressBar: false,
-                    closeOnClick: true,
+                    closeOnClick: true, 
                     pauseOnHover: true,
                     draggable: true,
                     });

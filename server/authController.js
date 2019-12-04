@@ -53,7 +53,6 @@ module.exports = {
     }, 
     followUser: (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
         const { user_id } = req.body
         const followee_id = user_id
         const follower_id = req.session.user.user_id

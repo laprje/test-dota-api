@@ -2,7 +2,7 @@ const initialState = {
     username: '', 
     user_id: '',
     profile_img: '',
-    email: '(optional)',
+    email: '',
     is_admin: '',
     account_id: '',
 }
