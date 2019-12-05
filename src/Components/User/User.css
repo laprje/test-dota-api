@@ -1,7 +1,7 @@
 .user {
     background-color: #3a4046;
     margin: 10px;
-    width: 30vw;
+    min-width: 25vw;
     display: flex;
     justify-content: space-between;
     border: 1.3px solid rgba(119, 113, 113, 0);
@@ -18,7 +18,7 @@
     background-color: #3a4046;
     margin: 20px;
     height: 120px;
-    width: 30vw;
+    min-width: 25vw;
     display: flex;
     justify-content: space-between;
     border: 1.3px solid rgb(34, 34, 34);
@@ -349,6 +349,8 @@ background-color: #67727c;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 5px;
+
 }
 
 .followee-cont {
@@ -356,8 +358,24 @@ background-color: #67727c;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width:90%;
+    width: 100%;
+    padding: 5px 0px;
+    margin-left: 0px;
+    margin-top: 5px;
+    border: 1px solid rgba(119, 113, 113, 0);
+}
+
+.followee-cont h3 {
     margin-left: 10px;
+}
+
+.followee-cont img {
+    margin-right: 10px;
+}
+
+.followee-cont:hover {
+    border: 1px solid white;
+
 }
 
 .profile-img-followee {
@@ -381,3 +399,40 @@ background-color: #67727c;
     border-radius: 5px;
 }
 
+.my-followed-users {
+    background: #3a4046;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1.3px solid rgb(34, 34, 34);
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.fa-expand {
+    color: white;
+    transform: scale(1.2);
+
+}
+
+.fa-expand:hover {
+    cursor: pointer;
+}
+
+.display-row-minimize-cont {
+    display: flex;
+
+}
+
+.fa-window-minimize {
+    position: relative;
+    top: 20px;
+    right: 20px;
+    background: #3a4046;
+    border: 1.3px solid rgb(34, 34, 34);
+    padding: 5px;
+    height: 20px;
+    color: white;
+    border-radius: 5px;
+}

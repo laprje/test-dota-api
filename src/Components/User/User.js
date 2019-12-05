@@ -29,9 +29,9 @@ class User extends Component {
             followedUsersFinal: '',
             followedUsersData: [],
             thisUserId: '',
-            isFollowing: false, 
-        }
-        
+            isFollowing: false,
+            toggleFollowWindow: false,
+        }        
     }
 
     componentDidMount() {
@@ -80,6 +80,10 @@ class User extends Component {
             })
             .catch(err => console.log(err))
         }
+    }
+
+    refreshPage() {
+        window.location.reload()
     }
 
     isFollowingFn() {
@@ -190,7 +194,24 @@ class User extends Component {
             .catch(err => console.log(err))
     }
     
-
+    toggleFollowWindowFn() {
+        if (this.state.followedUsersFinal) {
+            this.setState({
+                toggleFollowWindow: !this.state.toggleFollowWindow
+            })
+        } else {
+            toast.error('Please login to follow users and compare stats', {
+                position: "top-right", 
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true, 
+                pauseOnHover: true,
+                draggable: true,
+                });
+        }
+        
+        
+    }
     
 
     render(props) {    
@@ -202,13 +223,14 @@ class User extends Component {
             <div className="user-cont">
                 {/* only rendered on dashboard */}
                 {this.props.userObj ? (
+                    
                     <Link className="link" to={`/user/${this.props.userObj.account_id}`}>
+                        {this.state.data ? (
                         <div className="user">
-                            {this.state.data ? (
                             <div className="user-info">
                                 <div className="basic-info">
                                     <div className="name">
-                                        <h1>{this.state.data.profile.personaname.substr(0, 10)}</h1>
+                                        <h1>{this.state.data.profile.personaname.substr(0, 9)}</h1>
                                         {this.state.data.profile.plus ? (
                                             <div className="dota-plus-icon-div">
                                                 <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
@@ -221,8 +243,8 @@ class User extends Component {
                                 </div>
                                 <img className="profile-img" src={this.state.data.profile.avatarfull} alt="profile pic" />
                             </div>
-                            ) : null }
                         </div>
+                        ) : null }
                     </Link>
                 ) :
                 // rendered on single user page
@@ -238,19 +260,6 @@ class User extends Component {
                                 <button onClick={() => this.unFollowUser(this.props.match.params.id)} className="follow-user">Unfollow</button>
                                 ) : <button onClick={() => this.followUser(this.props.match.params.id)} className="follow-user">Follow</button>
                                 }
-                                <ToastContainer
-                                    position="top-right"
-                                    autoClose={5000}
-                                    hideProgressBar={false}
-                                    newestOnTop={false}
-                                    closeOnClick
-                                    rtl={false}
-                                    pauseOnVisibilityChange
-                                    draggable
-                                    pauseOnHover
-                                    />
-                                    {/* Same as */}
-                                <ToastContainer />
                                 </div>
                             ) : <h3 className="login-h3">Login to unlock more features!</h3> }
                         </div>
@@ -259,7 +268,7 @@ class User extends Component {
                                 <div className="user-info">
                                         <div className="basic-info">
                                             <div className="name">
-                                                <h1>{this.state.data.profile.personaname.substr(0, 10)}</h1>
+                                                <h1>{this.state.data.profile.personaname.substr(0, 9)}</h1>
                                                 {this.state.data.profile.plus ? (
                                                     <div className="dota-plus-icon-div">
                                                         <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
@@ -276,27 +285,36 @@ class User extends Component {
                         </div>
 
 
-            {this.state.followedUsersFinal ? (
-            <div className="follow-cont">
-                <Element name="test7" className="element" id="containerElement">
+            {this.state.followedUsersFinal && this.state.toggleFollowWindow ? (
+                <div className="display-row-minimize-cont">
+                    <div className="follow-cont">
+                    <Element name="test7" className="element" id="containerElement">
 
-                        {this.state.followedUsersData ? (
-                            this.state.followedUsersData.map(el => (
-                            <div key={key2++}>
-                                <Element name="firstInsideContainer" style={{
-                                marginBottom: '10px'
-                                }}>
-                                <FollowedUsers
-                                followedUserObj={el} key={key++}
-                                />
-                                </Element>
-                            </div>
-                            ))
-                        ) : null }
-                    
-                </Element>
-            </div>
+                            {this.state.followedUsersData ? (
+                                this.state.followedUsersData.map(el => (
+                                    <div key={key2++}>
+                                    <Element name="firstInsideContainer" style={{
+                                        marginBottom: '10px'
+                                    }}>
+                                    <FollowedUsers
+                                    followedUserObj={el} key={key++}
+                                    />
+                                    </Element>
+                                </div>
+                                ))
+                                ) : null }
+                        
+                    </Element>
+                    </div>
+                    <i className="fas fa-window-minimize" onClick={() => this.toggleFollowWindowFn()}></i>
+                </div>
             ): null }
+            {this.state.toggleFollowWindow ? (
+            null 
+            ) : <div className="my-followed-users">
+            <h3>My Followed Users</h3>
+            <i className="fas fa-expand" onClick={() => this.toggleFollowWindowFn()}></i>
+            </div> }
 
                     
 
