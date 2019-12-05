@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './User.css';
 import LowerContainer from './LowerContainer';
-import WordCloud from './WordCloud';
+import WordCloudComp from './WordCloud';
 import RecentStats from './RecentStats';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -343,7 +343,7 @@ class User extends Component {
                                 />
                             </div>
                             <div className="donut-div">
-                                <WordCloud 
+                                <WordCloudComp
                                     userId = {this.props.match.params.id}
                                 />
                             </div>

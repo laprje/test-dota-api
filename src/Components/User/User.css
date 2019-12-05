@@ -334,7 +334,13 @@ background-color: #67727c;
     height: 100px;
 }
 
+.word-cloud {
+    transform: scale(1.6);
+}
+
+
 .donut-div {
+
     margin-left: 30px;
     margin-top: 10px;
 }
@@ -442,4 +448,24 @@ background-color: #67727c;
     height: 20px;
     color: white;
     border-radius: 5px;
+}
+
+.word-cloud {
+    height: 500px;
+    width: 500px;
+}
+
+svg {
+    transform: scale(.3);
+    position: relative;
+    top: -100px;
+    left: -100px;
+    border-radius: 20%;
+    transition: 2s;
+}
+
+svg:hover {
+    transform: scale(1);
+    position: fixed;
+    background: rgba(119, 113, 113, .3);
 }
