@@ -38,7 +38,9 @@ module.exports = {
     },
     deleteUser(req, res) {
         const db = req.app.get('db');
-        db.delete_user(req.params.id)
+        const { id } = req.params
+        const { this_user_id } = req.body
+        db.delete_user({ id,  this_user_id})
         .then(result => {
             res.status(200).send(result)
         }).catch(err => console.log(err))

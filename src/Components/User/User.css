@@ -6,6 +6,7 @@
     justify-content: space-between;
     border: 1.3px solid rgba(119, 113, 113, 0);
     align-items: center;
+    border-radius: 5px;
 }
 
 .user:hover {
@@ -22,6 +23,7 @@
     justify-content: space-between;
     border: 1.3px solid rgb(34, 34, 34);
     align-items: center;
+    border-radius: 5px;
 }
 
 .user-cont {
@@ -255,6 +257,13 @@ background-color: #67727c;
     height: 100px;
 }
 
+.display-column-top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .hero-img-name {
     display: flex;
     justify-content: flex-start;
@@ -362,3 +371,13 @@ background-color: #67727c;
     overflow: scroll;
     overflow-x: hidden;
 }
+
+.login-h3 {
+    width: 200px;
+    font-size: 26px;
+    background-color: #3a4046;
+    padding: 15px;
+    border: 1.3px solid rgb(34, 34, 34);
+    border-radius: 5px;
+}
+

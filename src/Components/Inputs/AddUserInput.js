@@ -42,7 +42,7 @@ class AddUserInput extends Component {
         return (
             <div className="AddUserInput">
                 <div className="flex-row">
-                    <button onClick={(e) => this.newuser(e)}>Add User to Database: </button>
+                    <button onClick={(e) => this.newuser(e)}>Look up User: </button>
                     <input 
                         className="input"
                         type="text"

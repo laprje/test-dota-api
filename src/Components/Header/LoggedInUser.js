@@ -29,16 +29,16 @@ class LoggedInUser extends Component {
             <div>
                 {this.props.user_id ? (
                 <div className="login-cont">
-                    <Link className="link" to={`/user/${this.props.profile_id}`}>
+                    <Link className="link" to={`/user/${this.props.account_id}`}>
                         <h2 className="logged-in-user">{this.props.username}</h2>
                     </Link>
-                    <Link className="link" to={`/user/${this.props.profile_id}`}>
+                    <Link className="link" to={`/user/${this.props.account_id}`}>
                         <img className="avatar-icon" src={this.props.profile_img} alt="" />
                     </Link>
                     <div className="dropdown">
                         <i className="fas fa-cog" />
                         <div className="dropdown-content">
-                            <a href={`#/user/${this.props.profile_id}`}>My Profile</a>
+                            <a href={`#/user/${this.props.account_id}`}>My Profile</a>
                             <a href="#/profile">Profile Settings</a>
                             <a onClick={this.props.logout} href="#/auth">Logout</a>
                         </div>

@@ -29,7 +29,7 @@ class User extends Component {
             followedUsersFinal: '',
             followedUsersData: [],
             thisUserId: '',
-            isFollowing: false,
+            isFollowing: false, 
         }
         
     }
@@ -95,16 +95,14 @@ class User extends Component {
             } else {
                 console.log("not following user")
             }
-        } else {
-            console.log("not following user 2")
-        }
+        } 
         })
     
     }
 
     getAccountIds() {
         this.loopUsers()
-        this.delayThree()
+        this.delayThree() 
     }
 
     delayThree() {
@@ -143,8 +141,9 @@ class User extends Component {
         }
 
     deleteUser(id) {
+        let this_user_id = this.state.thisUserId.user_id
         axios
-            .delete(`api/users/${id}`) 
+            .post(`api/users/${id}`, { this_user_id }) 
             .then(res => {
                 console.log("user deleted from db")
                 this.props.history.push("/")
@@ -229,7 +228,7 @@ class User extends Component {
                 // rendered on single user page
                 <div className="single-user">
                     <div className="top-two-divs">
-                        <div className="display-column">
+                        <div className="display-column-top-container">
                             {this.props.is_admin ? (
                                 <button className="delete-user" onClick={() => this.deleteUser(this.state.data.profile.account_id)}>Delete User</button>
                             ) : null }
@@ -253,7 +252,7 @@ class User extends Component {
                                     {/* Same as */}
                                 <ToastContainer />
                                 </div>
-                            ) : null }
+                            ) : <h3 className="login-h3">Login to unlock more features!</h3> }
                         </div>
                         <div className="user-solo">
                             {this.state.data ? (
@@ -307,7 +306,7 @@ class User extends Component {
                             <LowerContainer 
                             userId = {this.props.match.params.id}
                             />
-                            
+                        
                         </div>
                         <div className="display-column">
                             <div className="recent-stats-component-container">

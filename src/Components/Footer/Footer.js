@@ -23,7 +23,7 @@ class Footer extends Component {
                     </a>
                 </ul>
                 <div className="contact-me-cont">
-                    <h6>The creator of Dotoxic is looking for a job! Contact me here: </h6>
+                    <h6>The creator of Dota 100 is looking for a job! Contact me here: </h6>
                     <div className="social-media-btns">
                         <a href="https://www.linkedin.com/in/stephen-hubbard-8ab5b713a/">
                             <img className="linkedin-logo" src="https://icons-for-free.com/iconfiles/png/512/linkedin+linkedin+logo+networking+social+media+icon-1320196081476022403.png" alt=""/>

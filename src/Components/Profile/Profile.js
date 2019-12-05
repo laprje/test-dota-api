@@ -30,12 +30,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            email: this.props.email,
-            account_id: this.props.account_id,
-            profile_img: this.props.profile_img,
-            user_id: this.props.user_id,
-        })
+        
     }
 
     handleChange = (key, value) => {
@@ -105,7 +100,7 @@ class Profile extends Component {
                             <div className="display-row">
                                 <h3>Email:</h3>
                                 <input
-                                    placeholder={this.props.email} 
+                                    placeholder={this.state.email} 
                                     type="text"
                                     onChange={e => this.handleChange('email', e.target.value)}
                                     value={this.state.email}
@@ -114,7 +109,7 @@ class Profile extends Component {
                             <div className="display-row">
                                 <h3>ID:</h3>
                                 <input
-                                    placeholder={this.props.account_id} 
+                                    placeholder={this.state.account_id} 
                                     type="text"
                                     onChange={e => this.handleChange('account_id', e.target.value)}
                                     value={this.state.account_id}
