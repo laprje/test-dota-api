@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './User.css';
 import LowerContainer from './LowerContainer';
-import DoughnutGraph from './DoughnutGraph';
+import WordCloud from './WordCloud';
 import RecentStats from './RecentStats';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -32,6 +32,8 @@ class User extends Component {
             isFollowing: false,
             toggleFollowWindow: false,
         }        
+
+        this.componentDidMount = this.componentDidMount.bind(this)
     }
 
     componentDidMount() {
@@ -298,6 +300,7 @@ class User extends Component {
                                     }}>
                                     <FollowedUsers
                                     followedUserObj={el} key={key++}
+                                    propsComponentDidMountFn = {() => this.componentDidMount()}
                                     />
                                     </Element>
                                 </div>
@@ -311,10 +314,17 @@ class User extends Component {
             ): null }
             {this.state.toggleFollowWindow ? (
             null 
-            ) : <div className="my-followed-users">
+            ) :
+            <div>
+            <div className="my-followed-users">
             <h3>My Followed Users</h3>
-            <i className="fas fa-expand" onClick={() => this.toggleFollowWindowFn()}></i>
-            </div> }
+                <i className="fas fa-expand" onClick={() => this.toggleFollowWindowFn()}></i>
+            </div>
+            <div className="my-followed-users">
+                <h3>Followers: </h3>
+            </div>
+            </div> 
+            }
 
                     
 
@@ -333,7 +343,7 @@ class User extends Component {
                                 />
                             </div>
                             <div className="donut-div">
-                                <DoughnutGraph 
+                                <WordCloud 
                                     userId = {this.props.match.params.id}
                                 />
                             </div>

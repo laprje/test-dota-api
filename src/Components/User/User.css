@@ -335,7 +335,7 @@ background-color: #67727c;
 }
 
 .donut-div {
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 10px;
 }
 
@@ -375,6 +375,8 @@ background-color: #67727c;
 
 .followee-cont:hover {
     border: 1px solid white;
+    cursor: pointer;
+    background: #67727c;
 
 }
 
@@ -391,12 +393,17 @@ background-color: #67727c;
 }
 
 .login-h3 {
-    width: 200px;
+    width: 180px;
     font-size: 26px;
     background-color: #3a4046;
     padding: 15px;
     border: 1.3px solid rgb(34, 34, 34);
     border-radius: 5px;
+    text-align: justify;
+}
+
+.login-h3 h3 {
+    padding: 5px;
 }
 
 .my-followed-users {

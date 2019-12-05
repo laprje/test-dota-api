@@ -24,6 +24,7 @@
     "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^6.0.1",
     "react-toastify": "^5.4.1",
+    "react-wordcloud": "^1.1.1",
     "redux": "^4.0.4",
     "stripe": "^7.13.0"
   },
