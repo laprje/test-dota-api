@@ -1,5 +1,5 @@
 .dashboard {
-    height: 80vh;
+    height: 100vh;
     width: 100vw;
     align-content: center;
     display: flex;
@@ -75,4 +75,9 @@
 
 a:hover {
     cursor: pointer;
+}
+
+.registered-users {
+    text-decoration: underline;
+    margin-bottom: 20px;
 }

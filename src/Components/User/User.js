@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
 import FollowedUsers from './FollowedUsers';
 import { Element } from 'react-scroll'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -47,6 +47,8 @@ class User extends Component {
                     data: res.data
                 })
             })
+            
+            
             
         } else {
             const id = this.props.match.params.id
@@ -225,7 +227,6 @@ class User extends Component {
         let key = 0;  
         let key2 = 0;
 
-
         return (
             <div className="user-cont">
                 {/* only rendered on dashboard */}
@@ -239,11 +240,21 @@ class User extends Component {
                                     <div className="name">
                                         <h1>{this.state.data.profile.personaname.substr(0, 9)}</h1>
                                         {this.state.data.profile.plus ? (
-                                            <div className="dota-plus-icon-div">
-                                                <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
-                                                <span className="dota-plus-icon-tooltip">Dota Plus User</span>
+                                            <div className="badge-icons">
+                                                <div className="dota-plus-icon-div">
+                                                    <img className="dota-plus-icon" src="assets/Dota_Plus_icon.png" alt="dota-plus-logo" />
+                                                    <span className="dota-plus-icon-tooltip">Dota Plus User</span>
+                                                </div>
                                             </div>
                                         ) : null}
+                                        {this.props.is_admin ? (
+
+                                        <div className="admin-icon-div">
+                                            <img className="admin-icon" src="assets/admin_icon.png" alt="dota-plus-logo" />
+                                            <span className="dota-100-icon-tooltip">Dota 100 Admin</span>
+                                        </div>  
+                                        ) : null }
+
                                     </div>
                                     <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
                                     {/* <h2>Win/Lose: {this.state.wl.win} - {this.state.wl.lose}</h2> */}
@@ -326,7 +337,9 @@ class User extends Component {
                 <i className="fas fa-expand" onClick={() => this.toggleFollowWindowFn()}></i>
             </div>
             <div className="my-followed-users">
-                <h3>Followers: </h3>
+            {this.state.data ? (
+            <h3>{this.state.data.profile.personaname.substr(0, 9)}'s Followers: {this.state.followedUsers.length} </h3>
+            ) : null }
             </div>
             </div> 
             }
@@ -348,9 +361,9 @@ class User extends Component {
                                 />
                             </div>
                             {this.state.wordCloudToggle ? (
-                                <div className="word-cloud-btn-cont">
+                                <div className="pre-word-cloud-cont">
                                     <h1>Word Cloud</h1>
-                                    <button onClick={() => this.toggleWordCloudFn()}>Show Word Cloud</button>
+                                    <button onClick={() => this.toggleWordCloudFn()}>Load Word Cloud</button>
                                 </div>
                                 ) : 
                                 <div className="donut-div">

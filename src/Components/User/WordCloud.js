@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Doughnut} from 'react-chartjs-2';
 import './User.css';
 import axios from 'axios';
-import ReactWordcloud from 'react-wordcloud';
+// import ReactWordcloud from 'react-wordcloud';
 import WordCloud from 'react-d3-cloud';
+import { Ring } from 'react-awesome-spinners'
 
 
 
@@ -23,7 +23,6 @@ export default class WordCloudComp extends Component {
             })
         setTimeout(1000)
         this.getWords()
-        console.log(this.state.allWords)
         })
     }
 
@@ -36,7 +35,7 @@ export default class WordCloudComp extends Component {
             }
         ]
 
-        for (let i = 5; i < 1000; i ++) {
+        for (let i = 5; i < 2000; i ++) {
             let k = Math.floor(Math.random() * 5000)
             words.push({text: `${Object.keys(myObject)[k]}`, value: Object.values(myObject)[k]})
         }
@@ -48,28 +47,37 @@ export default class WordCloudComp extends Component {
 
     render() {
 
-        const fontSizeMapper = word => Math.log2(word.value) * 2;
+        const fontSizeMapper = word => Math.log2(word.value) * 3;
         const rotate = word => word.value % 90;
 
 
         return(
             <div className="doughnut">
-                    <div classname="pre-word-cloud-cont">
+                <div className="doughnut-cont">
+                    <div classname="word-cloud-text-cont">
                         <h1>Word Cloud</h1>
                         <h3>(Click and hold to enlarge)</h3>
-                    
-                    {this.state.allWords ? (
+                        
+                    </div>
+                    {this.state.stateWords.length > 1 ? (
+                    <div>
                     <div className="word-cloud">
 
                         <WordCloud
                             data={this.state.stateWords}
                             fontSizeMapper={fontSizeMapper}
                             rotate={rotate}
+                            padding="10px"
                         />
-
                     </div>
-                    ) : null }
-                </div>
+                    </div>
+                    ) : 
+                        <div className="loading-ring-word-cloud">
+                            <Ring />
+                        </div>
+                    }
+
+                </div> 
             </div>
         )
     }

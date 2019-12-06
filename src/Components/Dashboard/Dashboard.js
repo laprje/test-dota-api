@@ -39,6 +39,7 @@ export default class Dashboard extends Component {
                     <AddUserInput 
                         componentDidMountDashboard = {this.componentDidMount}
                     />
+                    <h1 className="registered-users">Registered Users</h1>
 
                     {this.state.users ? (
                     <div className="dashboard-cont">
