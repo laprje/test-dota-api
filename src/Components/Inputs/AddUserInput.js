@@ -35,14 +35,13 @@ class AddUserInput extends Component {
         this.setState({
             account_id: e.target.value
         })
-        console.log(this.state.account_id)
     }
 
     render() {
         return (
             <div className="AddUserInput">
                 <div className="flex-row">
-                    <button onClick={(e) => this.newuser(e)}>Look up User: </button>
+                    <button onClick={(e) => this.newuser(e)}>Look Up User: </button>
                     <input 
                         className="input"
                         type="text"

@@ -465,7 +465,17 @@ svg {
 }
 
 svg:hover {
-    transform: scale(1);
+    cursor: pointer;
+}
+
+svg:active {
+    transform: scale(.8);
     position: fixed;
-    background: rgba(119, 113, 113, .3);
+    background: rgba(34, 34, 34, 1);
+    top: -400px;
+    left: -300px;
+}
+
+.pre-word-cloud-cont {
+    position: relative;
 }

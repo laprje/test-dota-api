@@ -31,6 +31,7 @@ class User extends Component {
             thisUserId: '',
             isFollowing: false,
             toggleFollowWindow: false,
+            wordCloudToggle: true,
         }        
 
         this.componentDidMount = this.componentDidMount.bind(this)
@@ -212,9 +213,13 @@ class User extends Component {
                 });
         }
         
-        
     }
     
+    toggleWordCloudFn() {
+        this.setState({
+            wordCloudToggle: !this.state.wordCloudToggle
+        })
+    }
 
     render(props) {    
         let key = 0;  
@@ -342,11 +347,21 @@ class User extends Component {
                                     userId = {this.props.match.params.id}
                                 />
                             </div>
-                            <div className="donut-div">
-                                <WordCloudComp
-                                    userId = {this.props.match.params.id}
-                                />
-                            </div>
+                            {this.state.wordCloudToggle ? (
+                                <div className="word-cloud-btn-cont">
+                                    <h1>Word Cloud</h1>
+                                    <button onClick={() => this.toggleWordCloudFn()}>Show Word Cloud</button>
+                                </div>
+                                ) : 
+                                <div className="donut-div">
+                                    <WordCloudComp
+                                        userId = {this.props.match.params.id}
+                                    />
+                                </div>
+                            }
+                            
+
+
                         </div>
                     </div>
                 </div>

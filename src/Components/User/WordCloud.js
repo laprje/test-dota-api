@@ -23,28 +23,27 @@ export default class WordCloudComp extends Component {
             })
         setTimeout(1000)
         this.getWords()
+        console.log(this.state.allWords)
         })
     }
 
     getWords() {
         let myObject = this.state.allWords.all_word_counts
-        const words = []
-
-        for (let key in myObject) {
-            if (myObject.hasOwnProperty(key)) {
-                // console.log(myObject[key])
+        const words = [
+            {
+            text: "", 
+            value: 84,
             }
-        }
+        ]
 
         for (let i = 5; i < 1000; i ++) {
-            let obj = {}
-            words.push({text: `${Object.keys(myObject)[i]}`, value: Object.values(myObject)[i]})
+            let k = Math.floor(Math.random() * 5000)
+            words.push({text: `${Object.keys(myObject)[k]}`, value: Object.values(myObject)[k]})
         }
 
         this.setState({
             stateWords: words,
         })
-        console.log(this.state.stateWords)
     }
 
     render() {
@@ -55,18 +54,18 @@ export default class WordCloudComp extends Component {
 
         return(
             <div className="doughnut">
-                <div className="doughnut-cont">
-                    <h1>Word Cloud</h1>
-                    <h3>(Click to enlarge)</h3>
+                    <div classname="pre-word-cloud-cont">
+                        <h1>Word Cloud</h1>
+                        <h3>(Click and hold to enlarge)</h3>
                     
                     {this.state.allWords ? (
                     <div className="word-cloud">
 
-                    <WordCloud
-                        data={this.state.stateWords}
-                        fontSizeMapper={fontSizeMapper}
-                        rotate={rotate}
-                    />
+                        <WordCloud
+                            data={this.state.stateWords}
+                            fontSizeMapper={fontSizeMapper}
+                            rotate={rotate}
+                        />
 
                     </div>
                     ) : null }

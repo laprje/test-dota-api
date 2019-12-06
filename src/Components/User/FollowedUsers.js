@@ -19,7 +19,6 @@ class FollowedUser extends Component {
 
 
     render() {
-        console.log(this.props)
         return(
             <div className="followee-cont" onClick={() => this.pushFn()}>
                 <h3>{this.props.followedUserObj.profile.personaname}</h3>
