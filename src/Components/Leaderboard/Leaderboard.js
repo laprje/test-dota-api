@@ -15,16 +15,6 @@ class Leaderboard extends Component {
         followedUsersDisplay: [],
         followedUsers: [],
         followedUsersFinal: '',
-        followedUsersData: [{
-                profile: {
-                    personaname: "test"
-                }
-                }, 
-                {
-                profile: {
-                    personaname: "test2"
-                } 
-                }],
         thisUserId: '',
         matches100: '',
         didUserWin100: '',
@@ -55,12 +45,13 @@ class Leaderboard extends Component {
             }
             ]
         }, 
+        followedUsersData: '',
+        followedUsersMatches100: '',
 
         }
     }
 
     componentDidMount() {
-        console.log(this.state.lineData.datasets[0].data)
         let newArr = []
         const id = this.props.account_id
         axios
@@ -97,9 +88,8 @@ class Leaderboard extends Component {
         .get(`https://api.opendota.com/api/players/${this.props.account_id}/matches?limit=100`)
         .then( res => {
             this.setState({
-                matches100: res.data
+                matches100: res.data.reverse()
             })
-            console.log(this.state.matches100)
             this.didUserWin100()
         })
         .catch(err => console.log(err))
@@ -126,18 +116,21 @@ class Leaderboard extends Component {
     }
 
     calcMMR() {
-        let mmr = 4000;
+        let mmr = this.state.data.mmr_estimate.estimate;
+        let mmrStart = mmr;
         let newArr = [];
         let newArr2 = [];
-        for (let i = 0; i < this.state.matches100.length; i++) {
+        for (let i = 0; i < this.state.matches100.length + 1; i++) {
             if (this.state.didUserWin100[i] === true) {
                 mmr = mmr + 25
+
             } else {
                 mmr = mmr - 25
+
             }
             newArr.push(mmr)
         }
-        for (let i = 0; i < this.state.matches100.length; i++) {
+        for (let i = 1; i < 101; i++) {
             newArr2.push(`${i}`)
         }
         this.setState({
@@ -164,11 +157,11 @@ class Leaderboard extends Component {
                 pointRadius: 1,
                 pointHitRadius: 10,
                 data: newArr
-                }
+                }, 
+                
                 ]
             },
         })
-        console.log(this.state.lineData.datasets[0].data)
     }
 
     getAccountIds() {
@@ -197,28 +190,40 @@ class Leaderboard extends Component {
     }
     
 
-    renderFollowedUsers = () => {
+    renderFollowedUsers = async () => {
         let newArr = []
         for (let i = 0; i < this.state.followedUsersFinal.length; i++) {
+            await 
             axios
                 .get(`https://api.opendota.com/api/players/${this.state.followedUsersFinal[i]}`)
                 .then(res => {
                     newArr.push(res.data)
-                    this.setState({
-                        followedUsersData: newArr
-                    })
+                })
+                this.setState({
+                    followedUsersData: newArr
                 })
             }    
+
+            let newArr2 = []
+            for ( let i = 0; i < newArr.length; i++) {
+            await console.log(newArr[i].profile.account_id)
+            await 
+            axios 
+            .get(`https://api.opendota.com/api/players/${newArr[i].profile.account_id}/matches?limit=100`)
+            .then(res => {
+                newArr2.push(res.data)
+            })
+            this.setState({
+                followedUsersMatches100: newArr2.reverse()
+            })
+            await console.log(this.state.followedUsersMatches100)
         }
+    }
+        
+
 
 
     render(props) {
-
-        console.log(this.state.followedUsersData)
-    
-    
-    
-
 
         return(
             <div className="leaderboard-page">
@@ -236,12 +241,12 @@ class Leaderboard extends Component {
                     </div>
                     ) : null } */}
 
-                {this.state.followedUsersData[1] ? (
+                {this.state.data ? (
                 <div className="line-graph">
                     <h2>Last 100 Games</h2>
                     <Line data={this.state.lineData} />
                 </div>
-                ) : null }
+                ) : <h3>Please login to see your Leaderboard</h3> }
 
             </div>
         )
