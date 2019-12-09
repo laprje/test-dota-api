@@ -107,6 +107,21 @@ i:hover {
 	cursor: pointer;
 }
 
+.not-mobile-friendly {
+	display: none;
+}
+
+@media (max-width: 1000px) {
+    .not-mobile-friendly {
+		display: inline-block !important;
+		margin-top: 100px;
+	}
+	
+	.everything-else { 
+		display: none;
+	}
+}
+
 
 
 

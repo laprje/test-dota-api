@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import './User.css';
 // import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -6,7 +6,7 @@ import Heroes from '../../../src/heroes.json';
 
 
 
-export default class RecentMatches extends Component {
+export default class RecentMatches extends PureComponent {
     constructor(props) {
         super(props)
 
@@ -21,11 +21,16 @@ export default class RecentMatches extends Component {
     componentDidMount() {
         this.epochToDate()
         this.didUserWin()
+        // console.log(this.props)
+
+    }
+
+    componentDidUpdate() {
+        this.epochToDate()
+        this.didUserWin()
     }
 
     async epochToDate() {
-        // let months = [ "January", "February", "March", "April", "May", "June", 
-        // "July", "August", "September", "October", "November", "December" ]
         let newDate = new Date((this.props.matchObj.start_time) * 1000)
         let newDateStr = JSON.stringify(newDate)
         let newDateStrSimple = newDateStr.substring(6, 11)
@@ -59,7 +64,6 @@ export default class RecentMatches extends Component {
     }
 
     render() {     
-        // console.log(this.props)
         const host = 'http://cdn.dota2.com'
         return (
                 <Link className="recent-match-row link" to={`/match/${this.props.matchObj.match_id}`}>
