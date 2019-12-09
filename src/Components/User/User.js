@@ -336,11 +336,11 @@ class User extends Component {
             <h3>My Followed Users</h3>
                 <i className="fas fa-expand" onClick={() => this.toggleFollowWindowFn()}></i>
             </div>
-            <div className="my-followed-users">
+            {/* <div className="my-followed-users">
             {this.state.data ? (
             <h3>{this.state.data.profile.personaname.substr(0, 9)}'s Followers: {this.state.followedUsers.length} </h3>
             ) : null }
-            </div>
+            </div> */}
             </div> 
             }
 

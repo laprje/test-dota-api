@@ -29,9 +29,6 @@ export default class User extends Component {
             })
     }
 
-    
-    
-
     nextButton = async () => {
         await this.setState({
             numHolder: this.state.numHolder + 10
@@ -92,8 +89,8 @@ export default class User extends Component {
                     </div>
                     ) : null }
                 <div className="display-row">
-                    <button onClick={this.previousButton}>Previous 10</button>
-                    <button onClick={this.nextButton}>Next 10</button>
+                    <button onClick={() => this.previousButton()}>Previous 10</button>
+                    <button onClick={() => this.nextButton()}>Next 10</button>
                 </div>
             </div>
         )

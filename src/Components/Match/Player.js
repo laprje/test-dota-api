@@ -7,7 +7,6 @@ export default class Player extends Component {
 
 
     render() {
-        console.log(this.props)
         const host = 'http://cdn.dota2.com';
         return(
             <div className="player">

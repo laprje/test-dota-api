@@ -4,6 +4,8 @@ import axios from 'axios';
 import {Line} from 'react-chartjs-2';
 import { connect } from 'react-redux'
 import { updateUserInfo } from '../../ducks/reducer'
+import { Ring } from 'react-awesome-spinners'
+
 
 
 class Leaderboard extends Component {
@@ -171,7 +173,7 @@ class Leaderboard extends Component {
     }
 
     delayOne() {
-        setTimeout(this.renderFollowedUsers, 1000)
+        setTimeout(this.renderFollowedUsers, 500)
 
     }
     
@@ -323,10 +325,15 @@ class Leaderboard extends Component {
                 {this.state.data ? (
                 <div className="line-graph">
                     <h2>Last 100 Games</h2>
+                    {this.state.didFollowedUsersWin100 ? (
                     <Line data={this.state.lineData} />
+                    ) :
+                    <div className="loading-ring-leaderboard">
+                        <Ring size={200} />
+                    </div>
+                    }
                 </div>
                 ) : <h3>Please login to see your Leaderboard</h3> }
-
             </div>
         )
     }
