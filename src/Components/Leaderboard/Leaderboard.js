@@ -47,6 +47,7 @@ class Leaderboard extends Component {
         }, 
         followedUsersData: '',
         followedUsersMatches100: '',
+        didFollowedUsersWin100: '',
 
         }
     }
@@ -84,15 +85,15 @@ class Leaderboard extends Component {
             })
         })
         .catch(err => console.log(err))
-        axios
-        .get(`https://api.opendota.com/api/players/${this.props.account_id}/matches?limit=100`)
-        .then( res => {
-            this.setState({
-                matches100: res.data.reverse()
-            })
-            this.didUserWin100()
-        })
-        .catch(err => console.log(err))
+        // axios
+        // .get(`https://api.opendota.com/api/players/${this.props.account_id}/matches?limit=100`)
+        // .then( res => {
+        //     this.setState({
+        //         matches100: res.data.reverse()
+        //     })
+        //     this.didUserWin100()
+        // })
+        // .catch(err => console.log(err))
 
     }        
 
@@ -166,10 +167,10 @@ class Leaderboard extends Component {
 
     getAccountIds() {
         this.loopUsers()
-        this.delayThree()
+        this.delayOne()
     }
 
-    delayThree() {
+    delayOne() {
         setTimeout(this.renderFollowedUsers, 1000)
 
     }
@@ -199,6 +200,7 @@ class Leaderboard extends Component {
                 .then(res => {
                     newArr.push(res.data)
                 })
+
                 this.setState({
                     followedUsersData: newArr
                 })
@@ -206,18 +208,95 @@ class Leaderboard extends Component {
 
             let newArr2 = []
             for ( let i = 0; i < newArr.length; i++) {
-            await console.log(newArr[i].profile.account_id)
             await 
             axios 
             .get(`https://api.opendota.com/api/players/${newArr[i].profile.account_id}/matches?limit=100`)
             .then(res => {
-                newArr2.push(res.data)
+                newArr2.push(res.data.reverse())
             })
-            this.setState({
-                followedUsersMatches100: newArr2.reverse()
+            newArr2 = newArr2.reverse()
+            await this.setState({
+                followedUsersMatches100: newArr2
             })
-            await console.log(this.state.followedUsersMatches100)
+            // await console.log(this.state.followedUsersMatches100)
         }
+        await this.didFollowedUserWins100()
+    }
+
+    async didFollowedUserWins100() {
+        // console.log(this.state.followedUsersMatches100)
+        let newArr = []
+        for ( let i = 0; i < this.state.followedUsersMatches100.length; i++ ) {
+            newArr[i] = []
+            for (let k = 0; k < this.state.followedUsersMatches100[i].length; k++) {
+                if (this.state.followedUsersMatches100[i][k].player_slot > 99 && this.state.followedUsersMatches100[i][k].radiant_win === false) {
+                    newArr[i].push(true)
+                } else if (this.state.followedUsersMatches100[i][k].player_slot > 99 && this.state.followedUsersMatches100[i][k].radiant_win === true) {
+                    newArr[i].push(false)
+                } else if (this.state.followedUsersMatches100[i][k].player_slot < 99 && this.state.followedUsersMatches100[i][k].radiant_win === true) {
+                    newArr[i].push(true)
+                } else if (this.state.followedUsersMatches100[i][k].player_slot < 99 && this.state.followedUsersMatches100[i][k].radiant_win === false) {
+                    newArr[i].push(false)
+                }
+            }
+            // console.log(newArr[i])
+            await this.setState({
+                didFollowedUsersWin100: newArr
+            })
+        }
+        await this.calcFollowedUsersMMR()
+    }
+
+    calcFollowedUsersMMR() {
+        let newArr = [];
+        let newArr2 = [];
+        let newArr3 = [];
+        for ( let i = 1; i < 101; i++) {
+            newArr2.push(`${i}`)
+        }
+        for (let i = 0; i < this.state.didFollowedUsersWin100.length; i++) {
+            newArr[i] = []
+            let mmr = 0
+            for (let k = 0; k < this.state.didFollowedUsersWin100[i].length; k++) {
+                if (this.state.didFollowedUsersWin100[i][k] === true) {
+                    mmr = mmr + 25
+                } else {
+                    mmr = mmr - 25
+                }
+                newArr[i].push(mmr)
+            }
+            var x = Math.floor(Math.random() * 256);
+            var y = Math.floor(Math.random() * 256);
+            var z = Math.floor(Math.random() * 256);
+            var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            newArr3.push({
+                label: `${this.state.followedUsersData[i].profile.personaname}`,
+                fill: false,
+                lineTension: .1,
+                backgroundColor: bgColor,
+                borderColor: bgColor,
+                borderCapStyle: 'round',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'round',
+                pointBorderColor: bgColor,
+                pointBackgroundColor: bgColor,
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: bgColor,
+                pointHoverBorderColor: bgColor,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: newArr[i],
+                },)
+        }
+        this.setState({
+            lineData: {
+                labels: newArr2,
+                datasets: newArr3
+            },
+        })
     }
         
 

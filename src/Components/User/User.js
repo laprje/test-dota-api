@@ -247,13 +247,13 @@ class User extends Component {
                                                 </div>
                                             </div>
                                         ) : null}
-                                        {this.props.is_admin ? (
+                                        {/* {this.props.is_admin ? (
 
                                         <div className="admin-icon-div">
                                             <img className="admin-icon" src="assets/admin_icon.png" alt="dota-plus-logo" />
                                             <span className="dota-100-icon-tooltip">Dota 100 Admin</span>
                                         </div>  
-                                        ) : null }
+                                        ) : null } */}
 
                                     </div>
                                     <h2>MMR: {this.state.data.mmr_estimate.estimate}</h2>
